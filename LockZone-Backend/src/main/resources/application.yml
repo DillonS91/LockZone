@@ -1,0 +1,10 @@
+spring:
+  sql:
+    init:
+      platform: h2
+  jpa: 
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
