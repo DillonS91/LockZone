@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "menu")
+@Table(name = "master")
 public class Master {
 	
 	@Id

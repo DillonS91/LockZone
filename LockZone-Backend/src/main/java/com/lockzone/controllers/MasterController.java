@@ -19,11 +19,11 @@ import com.lockzone.beans.Master;
 import com.lockzone.data.MasterRepository;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/login")
 @CrossOrigin(origins = "*")
 public class MasterController {
 
-	@Autowired
+	@Autowired(required=true)
 	private MasterRepository repository;
 	
 	@GetMapping
