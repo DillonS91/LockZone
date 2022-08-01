@@ -9,6 +9,9 @@ export const  App = () => {
       <Navigation>
         <section>
           <div>
+            <Link to='/'>Login</Link>
+          </div>
+          <div>
             <Link to='/home'>Home</Link>
           </div>
           <div>
@@ -25,8 +28,7 @@ export const  App = () => {
         <Route path='/websites' element={<Websites/>}/>
         <Route path='/accounts' element={<Accounts/>}/>
       </Routes>
-    </BrowserRouter>
-    
+    </BrowserRouter>    
   );
 }
 
