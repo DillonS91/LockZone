@@ -8,18 +8,20 @@ export const  App = () => {
   return (
     <BrowserRouter>
       <Navigation>
-        <section>
-          <div>
-            <Link to='/'>Login</Link>
+        <section className ='nav-section'>
+          <div class= "float-container">
+          <div className = 'nav-item'>
+            <Link className = 'nav-item' to='/'>Login</Link>
           </div>
-          <div>
-            <Link to='/home'>Home</Link>
+          <div className = 'nav-item'>
+            <Link className = 'nav-item' to='/home'>Home</Link>
           </div>
-          <div>
-            <Link to='/websites'>Websites</Link>
+          <div className = 'nav-item'>
+            <Link className = 'nav-item' to='/websites'>Websites</Link>
           </div>
-          <div>
-            <Link to='/accounts'>Accounts</Link>
+          <div className = 'nav-item'>
+            <Link className = 'nav-item' to='/accounts'>Accounts</Link>
+          </div>
           </div>
         </section>
       </Navigation>
