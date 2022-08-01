@@ -2,7 +2,7 @@
 
 export const Navigation = ({children}) => {
     return(
-        <nav>
+        <nav className = 'navbar'>
             {children}
         </nav>
     );

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import { Home, Login, Websites, Accounts } from './pages';
 import { Navigation } from './component'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export const  App = () => {
   return (

@@ -25,12 +25,12 @@ export const SubmissionTable_Account = () => {
 
     return(
         <form onSubmit={handleSubmit}>
-            <h1>Enter a new website</h1>
+            <h1>Enter a new Account</h1>
             <input name = 'accname' ref = {userNameRef} placeholder='Enter user name'/>
             <br/>
             <input name = 'accpassword' ref = {userPasswordRef} placeholder='Enter password'/>
             <br/>
-            <button>Submit</button>
+            <button type="button" class="btn btn-primary">Submit</button>
         </form>
     );
 }
