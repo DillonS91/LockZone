@@ -20,8 +20,8 @@ public class AccountsService {
 		return repository.save(accounts);
 	}
 	
-	public List<Accounts> findAccountsByMaster(int master_id, int page){
-		return repository.findByWebsiteMasterId(master_id, PageRequest.of(page, DEFAULT_PAGE_SIZE)).toList();
+	public List<Accounts> findAccountsByMaster(int masterId, int page){
+		return repository.findByWebsiteMasterMasterId(masterId, PageRequest.of(page, DEFAULT_PAGE_SIZE)).toList();
 	}
 	
 	public long count() {

@@ -13,7 +13,7 @@ import com.lockzone.beans.Accounts;
 @Repository
 public interface AccountsRepository extends PagingAndSortingRepository<Accounts, Integer> {
 	
-	public Page<Accounts> findByWebsiteMasterId(int master_id, Pageable request);
+	public Page<Accounts> findByWebsiteMasterMasterId(int masterId, Pageable request);
 	
 	@Transactional(propagation = Propagation.NEVER)
 	@Query("from Accounts acc inner join acc.website web inner join web.master mas")

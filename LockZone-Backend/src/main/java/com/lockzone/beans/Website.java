@@ -1,5 +1,7 @@
 package com.lockzone.beans;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name ="website")
@@ -24,6 +29,10 @@ public class Website {
 	@ManyToOne
 	@JoinColumn(name = "master_id")
 	private Master master;
+	
+	@OneToMany(mappedBy = "website")
+	@JsonIgnore
+	private Set<Accounts> accounts;
 
 	public Website() {
 		super();
@@ -34,6 +43,14 @@ public class Website {
 		this.websiteId = websiteId;
 		this.urlName = urlName;
 		this.master = master;
+	}
+
+	public Set<Accounts> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(Set<Accounts> accounts) {
+		this.accounts = accounts;
 	}
 
 	public int getWebsiteId() {
