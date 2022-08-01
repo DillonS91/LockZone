@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 
-export const SubmissionTable_Website = () => {
+export const Submission_Table_Website = () => {
     
     const urlNameRef = useRef();
 
@@ -26,7 +26,7 @@ export const SubmissionTable_Website = () => {
             <h1>Enter a new Website</h1>
             <input name = 'urlName' ref = {urlNameRef} placeholder='Enter website url'/>
             <br/>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <Button type="button" class="btn btn-primary">Submit</Button>
         </form>
     );
 }

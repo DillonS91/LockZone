@@ -1,4 +1,4 @@
-export const DataReturn = ({ data }) => {
+export const Data_Return = ({ data }) => {
     return(
         <tr>
             <td>{data.name}</td>

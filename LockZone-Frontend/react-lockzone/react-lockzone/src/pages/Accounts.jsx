@@ -1,9 +1,9 @@
-import { SubmissionTable_Account } from "../component/SubmissionTable-Account";
+import { Submission_Table_Account } from "../component";
 
 // This is the accounts page. Frome here the user will be able to create new entries and look up existing entries
 
 export const Accounts = () => {
     return(
-        <SubmissionTable_Account/>
+        <Submission_Table_Account/>
     );
 }

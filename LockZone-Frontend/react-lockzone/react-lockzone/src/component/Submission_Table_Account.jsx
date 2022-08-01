@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useRef } from 'react';
+import Button from 'react-bootstrap/Button';
 
-export const SubmissionTable_Account = () => {
+export const Submission_Table_Account = () => {
     
     const userNameRef = useRef();
     const userPasswordRef = useRef();
@@ -26,11 +27,11 @@ export const SubmissionTable_Account = () => {
     return(
         <form onSubmit={handleSubmit}>
             <h1>Enter a new Account</h1>
-            <input name = 'accname' ref = {userNameRef} placeholder='Enter user name'/>
+            <input name = 'accname' ref = {userNameRef} placeholder='Enter Username'/>
             <br/>
-            <input name = 'accpassword' ref = {userPasswordRef} placeholder='Enter password'/>
+            <input name = 'accpassword' ref = {userPasswordRef} placeholder='Enter Password'/>
             <br/>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <Button type="button" class="btn btn-primary">Submit</Button>
         </form>
     );
 }

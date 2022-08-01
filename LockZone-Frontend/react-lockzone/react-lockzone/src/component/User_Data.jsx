@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { DataReturn } from './DataReturn';
+import { Data_Return } from './Data_Return';
 
-export const UserData = () => {
+export const User_Data = () => {
     const[uData, setUData] = useState([]);
 
     useEffect(()=>{
@@ -21,7 +21,7 @@ export const UserData = () => {
                 </thead>
                 <tbody>
                     {uData && uData.map(d =>{
-                        return <DataReturn key={ d.id } d={ d }/>
+                        return <Data_Return key={ d.id } d={ d }/>
                     })}
                 </tbody>
             </table>
