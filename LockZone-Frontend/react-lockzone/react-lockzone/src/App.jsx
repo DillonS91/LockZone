@@ -9,7 +9,7 @@ export const  App = () => {
     <BrowserRouter>
       <Navigation>
         <section className ='nav-section'>
-          <div class= "float-container">
+          <div className= "float-container">
           <div className = 'nav-item'>
             <Link className = 'nav-item' to='/'>Login</Link>
           </div>

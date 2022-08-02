@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useRef } from 'react';
-import { Button, Form, Container, Row, Col } from 'react-bootstrap';
+import { Button, Form, Container} from 'react-bootstrap';
 
-export const Submission_Table_Account = () => {
+export const SubmissionTableAccount = () => {
     
     const userNameRef = useRef();
     const userPasswordRef = useRef();
