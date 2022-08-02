@@ -24,8 +24,7 @@ code {
   font-weight: bold;
   margin: 0px 15px;
   color: #EEA47FFF;
-  text-decoration:underline;
-  
+  text-decoration:underline; 
 }
 .nav-item:hover {
   color: black;

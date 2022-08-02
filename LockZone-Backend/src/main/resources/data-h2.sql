@@ -1,3 +1,10 @@
+insert into users values('dan', '$2a$10$5Sebr.mNHjAe3Lly97ZnqeXm5t/4wrfDbJKJCei6LXimyZ3SWwXnm', true); 
+insert into users values('howard', '$2a$10$iCyW/yDkb6URKSeVwKrQt.FoIf5TJs87OkZfShVWuMQJWSHG83nGe', true); 
+
+insert into authorities values('dan', 'ROLE_USER');
+insert into authorities values('howard', 'ROLE_USER');
+insert into authorities values('dan', 'ROLE_ADMIN');
+
 insert into master (master_id, name, password) values('1', 'dan', 'root'); 
 insert into master (master_id, name, password) values('2', 'howard', 'root');
 

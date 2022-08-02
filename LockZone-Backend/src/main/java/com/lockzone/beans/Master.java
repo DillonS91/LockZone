@@ -18,10 +18,11 @@ public class Master {
 	private int masterId;
 	
 	@Column(name = "name")
-	//@NotBlank
+	@NotBlank
 	private String name;
 	
 	@Column(name = "password")
+	@NotBlank
 	private String password;
 
 	public Master() {

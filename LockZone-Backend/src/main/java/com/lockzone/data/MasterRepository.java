@@ -9,6 +9,8 @@ import com.lockzone.beans.Master;
 
 @Repository
 public interface MasterRepository extends JpaRepository<Master,Integer>{
-	public List<Master> findAll();
+	//public List<Master> findAll();
 	public List<Master> findByNameLike(String name);
+	
+	public Master save(Master master);
 }
