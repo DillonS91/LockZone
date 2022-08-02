@@ -1,0 +1,29 @@
+# in dev profile
+spring:  
+  sql:
+    init:
+      platform: h2 
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    com:
+      chinook: DEBUG
+    org:
+      springframework: 
+        web: DEBUG
+        security: DEBUG
+
+management:
+  endpoints:
+    web: #jmx:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+
+#springdoc:
+#  api-docs:
+#    path: path=/api-docs
