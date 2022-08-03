@@ -1,4 +1,3 @@
-//import { UserData } from "../component";
 import { AccordionRender } from "../component";
 import { Container } from "react-bootstrap";
 

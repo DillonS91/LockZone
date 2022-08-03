@@ -11,15 +11,13 @@ export const AccordionRender = () => {
     return(
         <Accordion>
             <Accordion.Item eventKey="0">
-                <Accordion.Header>Accordion Item #1</Accordion.Header>
+                <Accordion.Header>GitHub.com</Accordion.Header>
 
                 <CardRender/>
 
                 <Accordion.Body>
-                    LOREM ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. 
+                Username: Nobody_Nose_2_electricbogaloo <br/>
+                    Password: 12345password 
                     <div>
                         <Button>Update</Button>
                         <Button>Delete</Button>
@@ -29,11 +27,11 @@ export const AccordionRender = () => {
             </Accordion.Item> 
 
             <Accordion.Item eventKey="1">
-                <Accordion.Header>Accordion Item #2</Accordion.Header>
+                <Accordion.Header>Twitter.com</Accordion.Header>
 
                 <Accordion.Body>
-                    LOREM ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Username: yourname@email.com <br/>
+                    Password: A!S@D#F$  
                     <div>
                         <Button>Update</Button>
                         <Button>Delete</Button>
