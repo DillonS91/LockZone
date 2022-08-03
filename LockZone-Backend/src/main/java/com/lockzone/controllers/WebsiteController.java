@@ -18,7 +18,7 @@ public class WebsiteController {
 	@Autowired
 	private WebsiteRepository websiteRepository;
 	
-	@GetMapping
+	@GetMapping //localhost:8080/accounts?page0&size=1
 	public List<Website> getWebsites(@RequestParam(name="q", required = true) String name){
 		return websiteRepository.findByMasterName(name);
 	}

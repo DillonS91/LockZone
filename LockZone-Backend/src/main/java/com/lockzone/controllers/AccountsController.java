@@ -17,17 +17,17 @@ public class AccountsController {
 	@Autowired 
 	private AccountsService service;
 	
-	@GetMapping("/accounts/count")
+	@GetMapping("/accounts/count") //returns count
 	public long count() {
 		return service.count();
 	}
 	
-	@GetMapping("/accounts")
+	@GetMapping("/accounts") //localhost:8080/accounts?page0&size=10
 	public List<Accounts> findAll(@RequestParam(defaultValue="0") int page, @RequestParam int size){
 		return service.findAllAccountsPaged(page);
 	}
 	
-	@GetMapping("/accounts/master/{master_id}")
+	@GetMapping("/accounts/master/{master_id}") //Not sure
 	public List<Accounts> pageableAccountsByMaster(@PathVariable int master_id, int page){
 		return service.findAccountsByMaster(master_id, page);
 	}

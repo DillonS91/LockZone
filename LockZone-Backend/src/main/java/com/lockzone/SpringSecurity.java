@@ -29,6 +29,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().httpBasic(); // not-prod
 		http.authorizeRequests().mvcMatchers("/login-master").hasAnyRole("USER");
 		http.authorizeRequests().mvcMatchers("/websites/**").hasAnyRole("USER");
+		http.authorizeRequests().mvcMatchers("/accounts/**").hasAnyRole("USER");
 		http.authorizeRequests().mvcMatchers("/**").permitAll();
 		http.logout().deleteCookies("custom-cookie").invalidateHttpSession(false); // POST /logout
 		

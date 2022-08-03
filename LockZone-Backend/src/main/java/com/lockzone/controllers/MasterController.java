@@ -23,9 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lockzone.beans.Master;
 import com.lockzone.data.MasterRepository;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/")
 @CrossOrigin(origins = "*")
+//@Tag(description = "Artist API", name = "API Info")
 public class MasterController {
 
 	private static final Logger log = LoggerFactory.getLogger(MasterController.class);
@@ -33,15 +38,16 @@ public class MasterController {
 	@Autowired(required=true)
 	private MasterRepository repository;
 	
-	@GetMapping("/{id}")
-	//@Operation(description = "Returns an artist by id, and if not found returns blank Artist", 
-	//	responses = {@ApiResponse(responseCode = "400", description = "Invalid input")})
-	public ResponseEntity<Master> findById(@PathVariable int id, Authentication principal) {
-		log.debug("we're in the findById method"); // INFO default threshold
-		log.debug("findById URL: /artist/" + id);
-		log.info("Current user: " + principal.getName());
-		return ResponseEntity.ok(repository.findById(id).orElse(new Master()));
-	}
+	/*
+	 * @GetMapping("/{id}") //@Operation(description =
+	 * "Returns an master by master_id, and if not found returns blank Master", //
+	 * responses = {@ApiResponse(responseCode = "400", description =
+	 * "Invalid input")}) public ResponseEntity<Master> findById(@PathVariable int
+	 * id, Authentication principal) { log.debug("we're in the findById method"); //
+	 * INFO default threshold log.debug("findById URL: /" + id);
+	 * log.info("Current user: " + principal.getName()); return
+	 * ResponseEntity.ok(repository.findById(id).orElse(new Master())); }
+	 */
 	
 	@GetMapping
 	@ResponseBody
@@ -53,10 +59,10 @@ public class MasterController {
 		}
 	}
 	
-	//@GetMapping("/{id}") SAME AS ABOVE
-	//public ResponseEntity<Master> findById(@PathVariable int id) {
-	//	return ResponseEntity.ok(repository.findById(id).orElse(new Master()));
-	//}
+	@GetMapping("/{id}") 
+	public ResponseEntity<Master> findById(@PathVariable int id) {
+		return ResponseEntity.ok(repository.findById(id).orElse(new Master()));
+	}
 	
 	@PostMapping
 	@Transactional
@@ -65,13 +71,12 @@ public class MasterController {
 	}
 	
 	// Update
-	@PutMapping("/{id}") // PUT /artist/56
+	@PutMapping("/{id}") // PUT /master/56
 	public Master update(@RequestBody Master master, @PathVariable int id) {
 		if (repository.existsById(id)) {
-			master.setMasterId(id); // don't trust user to use your system as intended
+			master.setMasterId(id); 
 			return repository.save(master);
 		} else {
-			// you ain't updating, you saving
 			throw new IllegalArgumentException("ID doesn't exist");
 		}
 	}

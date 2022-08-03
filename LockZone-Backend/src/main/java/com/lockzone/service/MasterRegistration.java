@@ -18,7 +18,6 @@ public class MasterRegistration {
 	
 	public void register(String masterUsername, String masterPassword) {
 		String hash = passwordEncoder.encode(masterPassword);
-		
 		String userSql = "insert into users values(?, ?, true)";
 		String authSql = "insert into authorities values(?, ROLE_USER)";
 		jdbcTemplate.update(userSql, new String[] {masterUsername, hash}, new int[] {Types.VARCHAR, Types.VARCHAR});

@@ -11,7 +11,7 @@ import com.lockzone.data.AccountsRepository;
 
 @Service
 public class AccountsService {
-	private static final int DEFAULT_PAGE_SIZE=10;
+	private static final int DEFAULT_PAGE_SIZE=20;
 	
 	@Autowired
 	private AccountsRepository repository;
