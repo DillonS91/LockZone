@@ -35,16 +35,8 @@ export const SubmissionTableAccount = () => {
                     <Form.Label>Enter Password</Form.Label>
                     <Form.Control name = 'accpassword' ref = {userPasswordRef} placeholder = 'aBc123$%^DeF' /> 
                 </Form.Group>
-                <Button type="submit" class="btn btn-primary">Submit</Button>
+                <Button type="submit" className="btn btn-primary">Submit</Button>
             </Form>
         </Container>
-        // <form onSubmit={handleSubmit}>
-        //     <h1>Enter a new Account</h1>
-        //     <input name = 'accname' ref = {userNameRef} placeholder='Enter Username'/>
-        //     <br/>
-        //     <input name = 'accpassword' ref = {userPasswordRef} placeholder='Enter Password'/>
-        //     <br/>
-        //     <Button type="button" class="btn btn-primary">Submit</Button>
-        // </form>
     );
 }

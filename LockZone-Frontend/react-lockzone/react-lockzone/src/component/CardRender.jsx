@@ -9,9 +9,10 @@ export const CardRender = () => {
             aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur.
-            <br/>
-            <Button>Update</Button>
-            <Button>Delete</Button>
+            <div>
+                <Button>Update</Button>
+                <Button>Delete</Button>
+            </div>
         </Accordion.Body>
     );
 }
