@@ -1,10 +1,3 @@
-insert into users values('dan', '$2a$10$5Sebr.mNHjAe3Lly97ZnqeXm5t/4wrfDbJKJCei6LXimyZ3SWwXnm', true); 
-insert into users values('howard', '$2a$10$iCyW/yDkb6URKSeVwKrQt.FoIf5TJs87OkZfShVWuMQJWSHG83nGe', true); 
-
-insert into authorities values('dan', 'ROLE_USER');
-insert into authorities values('howard', 'ROLE_USER');
-insert into authorities values('dan', 'ROLE_ADMIN');
-
 insert into master (name, password) values('dan', 'root'); 
 insert into master (name, password) values('howard', 'root');
 
@@ -39,3 +32,10 @@ insert into accounts (accnames, accpassword, website_Id) values ('Cori', 'ugSKcS
 insert into accounts (accnames, accpassword, website_Id) values ('Emiline', 'IctfZjIMzO', 8);
 insert into accounts (accnames, accpassword, website_Id) values ('Cullen', 'uo4t9C80o', 9);
 insert into accounts (accnames, accpassword, website_Id) values ('Salaidh', 'zkedBULCV2n', 10);
+
+
+insert into Users(username,password,enabled,master_id) values('dan','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa', true,1);
+insert into Users(username,password,enabled,master_id) values('howard','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa',true,2);
+
+insert into authorities values('dan', 'ROLE_USER');
+insert into authorities values('howard', 'ROLE_USER');
