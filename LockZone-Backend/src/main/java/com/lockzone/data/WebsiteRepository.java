@@ -16,6 +16,8 @@ public interface WebsiteRepository extends JpaRepository<Website, Integer>{
 	@Query("from Website web inner join web.master mas where mas.name = ?1")
 	public List<Website> findByMasterName(String name);
 	
+	
+	
 	//@Transactional(propagation = Propagation.SUPPORTS)
 	//public Website save(Website website);
 }
