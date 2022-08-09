@@ -81,19 +81,18 @@ public class GenericService {
 	 */
 	
 	
-	
-	public Master getMasterIdByUsername(String username) {
+	public Master getMasterIdByUsername(String name) {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         Authentication authentication = securityContext.getAuthentication();
-        String userName = null;
+        String Name = null;
         if (authentication != null) {
-
+        		System.out.println("Testtttyyy");
                 UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-                userName = userDetails.getUsername();
-
+                Name = userDetails.getUsername();
         }
-        if(!userName.equals(null)) {
-        	return masterRepository.findByName(userName);
+        if(!Name.equals(null)) {
+    		System.out.println("Testttinnnn");
+        	return masterRepository.findByName(Name);
         }else {
         	return null;
         }
@@ -102,13 +101,14 @@ public class GenericService {
 	public int getMasterIdByUsername() {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		Authentication authentication = securityContext.getAuthentication();
-		String userName = null;
+		String Name = null;
+		System.out.println("Testttt");
 		if(authentication != null) {
 			UserDetails userDetails = (UserDetails)authentication.getPrincipal();
-			userName = userDetails.getUsername();
+			Name = userDetails.getUsername();
 		}
-		if(!userName.equals(null)) {
-			return (int) masterRepository.findByName(userName).getMasterId();
+		if(!Name.equals(null)) {
+			return (int) masterRepository.findByName(Name).getMasterId();
 		}else {
 			return 0;
 		}

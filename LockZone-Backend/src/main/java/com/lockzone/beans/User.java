@@ -16,7 +16,7 @@ public class User {
 	private String username;
 	
 	@OneToOne()
-	@JoinColumn(name="masterId")
+	@JoinColumn(name="master_id")
 	private Master master;
 	
 	@Column(name="password")
@@ -28,6 +28,12 @@ public class User {
 		super();
 	}
 
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+	
 	public User(String username, Master master, String password) {
 		super();
 		this.username = username;
