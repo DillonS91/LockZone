@@ -9,7 +9,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ import com.lockzone.beans.User;
 import com.lockzone.beans.Website;
 import com.lockzone.data.AccountsRepository;
 import com.lockzone.data.MasterRepository;
+import com.lockzone.data.UserRepository;
 import com.lockzone.data.WebsiteRepository;
 
 @Service
@@ -28,7 +31,8 @@ public class GenericService {
 	private MasterRepository masterRepository;
 	@Autowired
 	private WebsiteRepository websiteRepository;
-	
+	@Autowired
+	private UserRepository userRepository;
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -75,6 +79,40 @@ public class GenericService {
 	 * websiteRepository.findById(websiteId).get(); return
 	 * websiteRepository.save(website); }
 	 */
+	
+	
+	
+	public Master getMasterIdByUsername(String username) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Authentication authentication = securityContext.getAuthentication();
+        String userName = null;
+        if (authentication != null) {
+
+                UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+                userName = userDetails.getUsername();
+
+        }
+        if(!userName.equals(null)) {
+        	return masterRepository.findByName(userName);
+        }else {
+        	return null;
+        }
+    }
+	
+	public int getMasterIdByUsername() {
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		Authentication authentication = securityContext.getAuthentication();
+		String userName = null;
+		if(authentication != null) {
+			UserDetails userDetails = (UserDetails)authentication.getPrincipal();
+			userName = userDetails.getUsername();
+		}
+		if(!userName.equals(null)) {
+			return (int) masterRepository.findByName(userName).getMasterId();
+		}else {
+			return 0;
+		}
+	}
 	
 
 	
