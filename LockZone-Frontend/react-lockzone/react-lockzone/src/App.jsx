@@ -10,23 +10,23 @@ export const  App = () => {
       <Navigation>
         <section className ='nav-section'>
           <div className= "float-container">
-          <div className = 'nav-item'>
+          {/* <div className = 'nav-item'>
             <Link className = 'nav-item' to='/'>Update</Link>
-          </div>
+          </div> */}
           <div className = 'nav-item'>
             <Link className = 'nav-item' to='/home'>Home</Link>
           </div>
-          <div className = 'nav-item'>
+          {/* <div className = 'nav-item'>
             <Link className = 'nav-item' to='/websites'>Websites</Link>
-          </div>
-          <div className = 'nav-item'>
+          </div> */}
+          {/* <div className = 'nav-item'>
             <Link className = 'nav-item' to='/accounts'>Accounts</Link>
-          </div>
+          </div> */}
           </div>
         </section>
       </Navigation>
       <Routes>
-        <Route path='/' element={<Update/>}/>
+        <Route path='/update' element={<Update/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/websites' element={<Websites/>}/>
         <Route path='/accounts' element={<Accounts/>}/>

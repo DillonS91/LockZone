@@ -9,7 +9,7 @@ export const CardRender = () => {
     const navigate = useNavigate();
 
     const navigateToUpdate = () =>{
-        navigate('/');
+        navigate('/update');
     }
 
     return(     
@@ -19,7 +19,6 @@ export const CardRender = () => {
             <div>
                 <Button onClick={navigateToUpdate}>Update</Button>
                 <Button onClick={() => {setModalShow(true)}}>Delete</Button>
-
                 <DeleteModal show={modalShow} onHide={() => {setModalShow(false)}}/>
             </div>
         </Accordion.Body>

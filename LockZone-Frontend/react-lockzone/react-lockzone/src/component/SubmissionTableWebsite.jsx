@@ -36,13 +36,7 @@ export const SubmissionTableWebsite = () => {
                     <Form.Group as={Col} md="4" controlId="validationCustomUsername">
                         <Form.Label>Website</Form.Label>
                             <InputGroup hasValidation>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Please Enter a new Website"
-                                    name = 'urlName' 
-                                    ref = {urlNameRef} 
-                                    required
-                                />
+                                <Form.Control type="text" placeholder="Please Enter a new Website" name = 'urlName' ref = {urlNameRef} required/>
                                 <Form.Control.Feedback type="invalid">
                                  Please choose a website.
                                 </Form.Control.Feedback>
