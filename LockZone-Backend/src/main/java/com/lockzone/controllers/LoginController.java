@@ -1,6 +1,7 @@
 package com.lockzone.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -56,7 +57,7 @@ public class LoginController {
 				return ResponseEntity.ok(new Login(RequestContextHolder.getRequestAttributes().getSessionId(), auth.getAuthorities().toArray()[0].toString()));
 			}
 		}catch (BadCredentialsException e) {
-			throw new Exception("Invalid Credentials");
+			return new ResponseEntity<HttpStatus>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	

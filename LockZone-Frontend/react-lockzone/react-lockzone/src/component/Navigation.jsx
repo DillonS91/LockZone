@@ -1,9 +1,9 @@
-// creates the nav bar
 
+import Navbar from 'react-bootstrap/Navbar';
 export const Navigation = ({children}) => {
     return(
-        <nav className = 'navbar'>
+        <Navbar expand bg="dark">
             {children}
-        </nav>
+        </Navbar>
     );
 }

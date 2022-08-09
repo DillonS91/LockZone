@@ -1,6 +1,6 @@
 import { Axios } from 'axios';
 import { useState, useRef } from 'react';
-import { useCookies } from 'react-cookie';
+//import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
 import { Button, Form, Container, Row, Col, InputGroup } from 'react-bootstrap';
 
@@ -15,7 +15,7 @@ export const SignUpComponent = () => {
         navigate('/home');
     }
 
-    const [cookies, setCookies] = useCookies('Authority')
+    //const [cookies, setCookies] = useCookies('Authority')
 
     const login = async () => {
         const user = {
@@ -23,30 +23,32 @@ export const SignUpComponent = () => {
             password: masterPassword.current.value
         };
 
-        try{
-            await Axios.post('http://localhost:8080/', user)
-            setCookies('Authority', res.data.authority)
-        }catch(error){
-            console.log(error);
-        }finally{
-            navigateToUpdate();
-        }
+        // try{
+        //     await Axios.post('http://localhost:8080/', user)
+        //     setCookies('Authority', res.data.authority)
+        // }catch(error){
+        //     console.log(error);
+        // }finally{
+        //     navigateToUpdate();
+        // }
 
     }
 
-    const handleSubmit = async (event) => {
+    // const handleSubmit = async (event) => {
         
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        setValidated(true);
-    }
+    //     const form = event.currentTarget;
+    //     if (form.checkValidity() === false) {
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //     }
+    //     setValidated(true);
+    // }
+
+    //<Form noValidate validated={validated} onSubmit={handleSubmit}>
 
     return(
         <Container>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form onSubmit={login}>
                 <Row className='mb-3'>
                     <Form.Group as={Col} md='4' controlId='validationCustomUsername'>
                         <Form.Label>Username</Form.Label>
