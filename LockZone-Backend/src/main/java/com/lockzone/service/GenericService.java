@@ -70,5 +70,12 @@ public class GenericService {
 		websiteRepository.save(website);
 	}
 	
+	/*
+	 * public Website updateWebsite(Website website, int websiteId) { website=
+	 * websiteRepository.findById(websiteId).get(); return
+	 * websiteRepository.save(website); }
+	 */
+	
+
 	
 }

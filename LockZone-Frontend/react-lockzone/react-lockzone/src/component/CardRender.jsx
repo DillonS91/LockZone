@@ -1,17 +1,27 @@
+import { useState } from "react";
 import { Accordion, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { DeleteModal } from "./DeleteModal";
 
 export const CardRender = () => {
+    const[modalShow, setModalShow] = useState(false);
+
+    const navigate = useNavigate();
+
+    const navigateToUpdate = () =>{
+        navigate('/update');
+    }
+
     return(     
         <Accordion.Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-            <br/>
-            <Button>Update</Button>
-            <Button>Delete</Button>
+            Username: Nobody_Nose <br/>
+            Password: password12345 
+            <div>
+                <Button onClick={navigateToUpdate}>Update</Button>
+                <Button onClick={() => {setModalShow(true)}}>Delete</Button>
+                <DeleteModal show={modalShow} onHide={() => {setModalShow(false)}}/>
+            </div>
         </Accordion.Body>
     );
 }
+
