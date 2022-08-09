@@ -22,12 +22,12 @@ public class AccountsController {
 		return service.count();
 	}
 	
-	@GetMapping("/accounts") //localhost:8080/accounts?page0&size=10
+	@GetMapping("/accounts") //localhost:8080/accounts?page0&size=20
 	public List<Accounts> findAll(@RequestParam(defaultValue="0") int page, @RequestParam int size){
 		return service.findAllAccountsPaged(page);
 	}
 	
-	@GetMapping("/accounts/master/{master_id}") //Not sure
+	@GetMapping("/accounts/master/{master_id}") //localhost:8080/accounts?page0&size=20
 	public List<Accounts> pageableAccountsByMaster(@PathVariable int master_id, int page){
 		return service.findAccountsByMaster(master_id, page);
 	}

@@ -22,4 +22,5 @@ public class LockZoneBackendApplication {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();  // 10 salt
 	}
+	
 }
