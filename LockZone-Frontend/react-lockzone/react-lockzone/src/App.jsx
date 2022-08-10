@@ -46,9 +46,9 @@ function App(){
                   <div className = 'nav-item'>
                     <Link className = 'nav-item' to='/home'>Home</Link>
                   </div>
-                  {/* <div className = 'nav-item'>
+                  <div className = 'nav-item'>
                     <Link className = 'nav-item' to='/websites'>Websites</Link>
-                  </div> */}
+                  </div>
                   {/* <div className = 'nav-item'>
                     <Link className = 'nav-item' to='/accounts'>Accounts</Link>
                   </div> */}
