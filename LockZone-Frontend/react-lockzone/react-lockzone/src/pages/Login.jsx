@@ -1,20 +1,19 @@
-import { Container, Button, Card, Row, Form } from "react-bootstrap";
-import { Cookies, useCookies } from "react-cookie";
+import { Button, Card, Row, Form } from "react-bootstrap";
+import { useCookies } from "react-cookie";
 import { useRef, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 
 export const Login = () => {
-    const usernameRef = useRef('');
+    const nameRef = useRef('');
     const passwordRef = useRef('');
 
     const[,setCookie] = useCookies('Master')
-    const history = useNavigate();
     const[errorMessage, setErrorMessage] = useState('');
 
     const login = async() =>{
         let user = {
-            username: usernameRef.current.value,
+            username: nameRef.current.value,
             password: passwordRef.current.value
         };
         await axios.post("http://localhost:8080/login", user).then(res=>{
@@ -32,7 +31,7 @@ export const Login = () => {
             <Form onKeyDown={(e) => {e.key==="Enter"?login():setErrorMessage('')}}>
                 <Row style={{ justifyContent: "center" }}>
                     <Form.Label style={{ width: "25%", paddingRight: 0, fontSize: "18px" }}>Username: </Form.Label>
-                    <Form.Control ref={usernameRef} style={{ width: "55%", height: "32px" }} name="Username" required={true} placeholder='' />
+                    <Form.Control ref={nameRef} style={{ width: "55%", height: "32px" }} name="Username" required={true} placeholder='' />
                 </Row>
                 <Row style={{ justifyContent: "center" }}>
                     <Form.Label style={{ width: "25%", paddingRight: 0, fontSize: "18px" }}>Password: </Form.Label>

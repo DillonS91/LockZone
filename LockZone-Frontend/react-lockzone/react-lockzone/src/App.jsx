@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import { Home, Update, Websites, Accounts, Login } from './pages';
+import { Home, Update, Websites, Accounts, Login, SignUp } from './pages';
 import { Navigation } from './component'
 import { useCookies } from "react-cookie";
 import axios from 'axios';
@@ -28,7 +28,7 @@ function App(){
 
   useEffect(() =>{
     if(window.location.href.includes('/login') & cookies['Authority'] !== undefined) {
-      window.location.href = "http://localhost:3000"
+      window.location.href = "http://localhost:3000/home"
     }
   },[])
 
@@ -90,6 +90,9 @@ function App(){
                   </div> */}
                 </Nav>
                 <Nav>
+                <div classname = 'nav-item'>
+                    <Link className = 'nav-item' to='/signup'>Sign Up</Link>
+                  </div>
                   <div classname = 'nav-item'>
                     <Link className = 'nav-item' to='/login'>Login</Link>
                   </div>
@@ -102,7 +105,7 @@ function App(){
             <Route path='/websites' element={<Websites/>}/>
             <Route path='/accounts' element={<Accounts/>}/>
             <Route path="/login" element={<Login/>}/>
-
+            <Route path="/signup" element={<SignUp/>}/>
           </Routes>
         </BrowserRouter>   
       </>
