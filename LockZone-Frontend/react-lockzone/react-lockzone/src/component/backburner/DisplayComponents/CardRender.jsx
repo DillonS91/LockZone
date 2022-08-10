@@ -3,7 +3,7 @@ import { Accordion, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { DeleteModal } from "./DeleteModal";
 
-export const CardRender = () => {
+export const CardRender = ({ web }) => {
     const[modalShow, setModalShow] = useState(false);
 
     const navigate = useNavigate();
@@ -14,8 +14,8 @@ export const CardRender = () => {
 
     return(     
         <Accordion.Body>
-            Username: Nobody_Nose <br/>
-            Password: password12345 
+            Username: {web.accounts.accname} <br/>
+            Password: {web.accounts.accpassword} 
             <div>
                 <Button onClick={navigateToUpdate}>Update</Button>
                 <Button onClick={() => {setModalShow(true)}}>Delete</Button>

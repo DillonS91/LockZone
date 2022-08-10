@@ -7,9 +7,9 @@ export const Websites = () => {
     return(
         <>
             <Container>
-            <CreateNewEntryTable/> 
-            <br/>
-            <AccordionRender/>
+                <CreateNewEntryTable/> 
+                <br/>
+                <AccordionRender/>
             </Container>  
         </>
     );
