@@ -40,7 +40,7 @@ public class WebsiteController {
 
 	@GetMapping // localhost:8080/websites?q=dan
 	public List<Website> getWebsites(@RequestParam(name = "q", required = true) String name) {
-		return websiteRepository.findByMasterName(name);
+		return websiteRepository.findByMasterUsername(name);
 	}
 
 	@GetMapping("/{id}")
@@ -48,10 +48,14 @@ public class WebsiteController {
 		return ResponseEntity.ok(websiteRepository.findById(id).orElse(new Website()));
 	}
 
-	@PostMapping 
-	@Transactional // localhost:8080/websites?q=1 and insert json urlname (maybe make masterid a body as well?)
-	public void saveWebsite(@RequestBody Website website, @RequestParam(name = "q", required = true) int masterId) {
-		service.saveWebsite(website, masterId);
+//	@PostMapping 
+//	@Transactional // localhost:8080/websites?q=danbloom and insert json urlname (maybe make masterid a body as well?)
+//	public void saveWebsite(@RequestBody Website website, @RequestParam(name = "q", required = true) String masterUsername) {
+//		service.saveWebsite(website, masterUsername);
+//	}
+	@PostMapping
+	public Website save(@Valid @RequestBody Website website) {
+		return service.saveWebsite(website);
 	}
 	
 	/** something like this 

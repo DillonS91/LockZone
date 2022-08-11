@@ -43,21 +43,21 @@ public class GenericService {
 		String hash = passwordEncoder.encode(user.getPassword());
 		String username = user.getUsername();
 		user.setMaster(masterRepository.save(user.getMaster()));
-		int userId = user.getMaster().getMasterId();
+		int masterId = user.getMaster().getMasterId();
 		
 		String userSql = "insert into users values(?,?,true,?)";
 		String authSql = "insert into authorities values(?, 'ROLE_USER')";
-		jdbcTemplate.update(userSql, new Object[] {username, hash, userId}, new int[] {Types.VARCHAR, Types.VARCHAR, Types.INTEGER});
+		jdbcTemplate.update(userSql, new Object[] {username, hash, masterId}, new int[] {Types.VARCHAR, Types.VARCHAR, Types.INTEGER});
 		jdbcTemplate.update(authSql, new String[] {username}, new int[] {Types.VARCHAR});
 	}
 	
 	public ResponseEntity<?> findCustomerIdAuthorized(int id) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentName = "";
+		String currentUsername = "";
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-		    currentName = authentication.getName();
+		    currentUsername = authentication.getName();
 		}
-		Master masterCheck = masterRepository.findByName(currentName);
+		Master masterCheck = masterRepository.findByUsername(currentUsername);
 		if(authentication.getAuthorities().toArray()[0].equals(new SimpleGrantedAuthority("ROLE_USER"))) {
 			return new ResponseEntity<>(masterRepository.findById(id).get(), HttpStatus.OK);
 		}
@@ -69,9 +69,10 @@ public class GenericService {
 		}
 	}
 	
-	public void saveWebsite(Website website, int masterId) {
-		website.setMaster(masterRepository.findById(masterId).get());
-		websiteRepository.save(website);
+	public Website saveWebsite(Website website) {
+		//website.setMaster(masterRepository.findById(masterId).get());
+		//website.setMaster(masterRepository.findByUsername(masterUsername));
+		return websiteRepository.save(website);
 	}
 	
 	/*
@@ -81,18 +82,16 @@ public class GenericService {
 	 */
 	
 	
-	public Master getMasterIdByUsername(String name) {
+	public Master getMasterIdByUsername(String username) {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         Authentication authentication = securityContext.getAuthentication();
-        String Name = null;
+        String userName = null;
         if (authentication != null) {
-        		System.out.println("Testtttyyy");
                 UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-                Name = userDetails.getUsername();
+                userName = userDetails.getUsername();
         }
-        if(!Name.equals(null)) {
-    		System.out.println("Testttinnnn");
-        	return masterRepository.findByName(Name);
+        if(!userName.equals(null)) {
+        	return masterRepository.findByUsername(userName);
         }else {
         	return null;
         }
@@ -101,14 +100,13 @@ public class GenericService {
 	public int getMasterIdByUsername() {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		Authentication authentication = securityContext.getAuthentication();
-		String Name = null;
-		System.out.println("Testttt");
+		String userName = null;
 		if(authentication != null) {
 			UserDetails userDetails = (UserDetails)authentication.getPrincipal();
-			Name = userDetails.getUsername();
+			userName = userDetails.getUsername();
 		}
-		if(!Name.equals(null)) {
-			return (int) masterRepository.findByName(Name).getMasterId();
+		if(!userName.equals(null)) {
+			return (int) masterRepository.findByUsername(userName).getMasterId();
 		}else {
 			return 0;
 		}

@@ -41,19 +41,14 @@ public class LoginController {
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody User user) throws Exception {
 		Authentication auth;
-		System.out.println(user);
 		try {
 			auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword()));
 			SecurityContextHolder.getContext().setAuthentication(auth);
 			user.setPassword(null);
-			
-			System.out.println("Test " + RequestContextHolder.getRequestAttributes().getSessionId());
 			if(auth.getAuthorities().toArray()[0].toString().equals("ROLE_USER")) {
-				System.out.println("Test2 ");
 				return ResponseEntity.ok(new Login(RequestContextHolder.getRequestAttributes().getSessionId(), auth.getAuthorities().toArray()[0].toString(), service.getMasterIdByUsername(user.getUsername())));
 			}
 			else{
-				System.out.println("Test3 ");
 				return ResponseEntity.ok(new Login(RequestContextHolder.getRequestAttributes().getSessionId(), auth.getAuthorities().toArray()[0].toString()));
 			}
 		}catch (BadCredentialsException e) {

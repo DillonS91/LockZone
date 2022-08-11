@@ -1,7 +1,9 @@
 create table master (
   master_id int NOT NULL AUTO_INCREMENT primary key,
-  name varchar(100) NOT NULL UNIQUE,
-  password varchar(350) NOT NULL
+  username varchar(100) NOT NULL,
+  firstName varchar(100) NOT NULL,
+  lastName varchar(100) NOT NULL,
+  email varchar(100) NOT NULL
  );
  	
 create table website (
