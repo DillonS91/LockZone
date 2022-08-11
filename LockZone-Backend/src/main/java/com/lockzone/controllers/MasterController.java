@@ -1,5 +1,7 @@
 package com.lockzone.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lockzone.beans.Master;
@@ -32,20 +33,38 @@ public class MasterController {
 	@Autowired
 	private GenericService service;
 	
+//	@GetMapping
+//	public Object findAll(@RequestParam(required = false) String username) {
+//		if (username != null) {
+//			return repository.findByUsernameLike("%" + username + "%");
+//		} else {
+//			return repository.findAll();
+//		}
+//	}
 	@GetMapping
-	@ResponseBody
-	public Object findAll(@RequestParam(required = false) String username) {
-		if (username != null) {
-			return repository.findByUsernameLike("%" + username + "%");
-		} else {
-			return repository.findAll();
-		}
+	public List<Master> findAll(){
+		return repository.findAll();
 	}
 	
-	@GetMapping("/?username={username}")
-	public Master getByName(@PathVariable String username) {
-		return repository.findByUsername(username);
+	@GetMapping("/username")
+	public List<Master> findUsernameLikeIgnoreCase(@RequestParam(name = "q", required = true) String username){
+		return repository.findByUsernameLikeIgnoreCase("%" + username + "%");
 	}
+	
+	@GetMapping("/firstname")
+	public List<Master> findFirstNameLikeIgnoreCase(@RequestParam(name = "q", required = true) String firstName){
+		return repository.findByFirstNameLikeIgnoreCase("%" + firstName + "%");
+	}
+
+	@GetMapping("/lastname")
+	public List<Master> findLastNameLikeIgnoreCase(@RequestParam(name = "q", required = true) String lastName){
+		return repository.findByLastNameLikeIgnoreCase("%" + lastName + "%");
+	}
+	
+//	@GetMapping("/?username={username}")
+//	public Master getByName(@PathVariable String username) {
+//		return repository.findByUsername(username);
+//	}
 	
 	@GetMapping("/{id}") 
 	public ResponseEntity<Master> findById(@PathVariable int id) {

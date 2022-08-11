@@ -69,9 +69,10 @@ public class GenericService {
 		}
 	}
 	
-	public void saveWebsite(Website website, int masterId) {
-		website.setMaster(masterRepository.findById(masterId).get());
-		websiteRepository.save(website);
+	public Website saveWebsite(Website website) {
+		//website.setMaster(masterRepository.findById(masterId).get());
+		//website.setMaster(masterRepository.findByUsername(masterUsername));
+		return websiteRepository.save(website);
 	}
 	
 	/*
@@ -86,12 +87,10 @@ public class GenericService {
         Authentication authentication = securityContext.getAuthentication();
         String userName = null;
         if (authentication != null) {
-        		System.out.println("Testtttyyy");
                 UserDetails userDetails = (UserDetails) authentication.getPrincipal();
                 userName = userDetails.getUsername();
         }
         if(!userName.equals(null)) {
-    		System.out.println("Testttinnnn");
         	return masterRepository.findByUsername(userName);
         }else {
         	return null;
@@ -102,7 +101,6 @@ public class GenericService {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		Authentication authentication = securityContext.getAuthentication();
 		String userName = null;
-		System.out.println("Testttt");
 		if(authentication != null) {
 			UserDetails userDetails = (UserDetails)authentication.getPrincipal();
 			userName = userDetails.getUsername();
