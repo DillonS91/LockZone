@@ -9,5 +9,6 @@ export * from './backburner/SubmissionComponents/CreateNewEntryTable';
 export * from './backburner/SubmissionComponents/PasswordComponent';
 /////////////////////////////////////////////////////////////////////////
 export * from './Website/WebsiteComponent';
+export * from './Website/AddWebsite';
 export * from './Master/MasterComponent';
 export * from './Accounts/AccountsComponent';

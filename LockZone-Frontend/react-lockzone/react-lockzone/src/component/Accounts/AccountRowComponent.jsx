@@ -5,7 +5,7 @@ export const AccountRowComponent = ({ acc }) => {
         <tr>
             <td>{acc.accnames}</td>
             <td>{acc.accpassword}</td>
-            <td>{acc.masterId}</td>
+            {/* <td>{acc.masterId}</td> */}
         </tr>
     );
 }

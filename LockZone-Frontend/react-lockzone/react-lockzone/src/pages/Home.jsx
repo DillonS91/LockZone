@@ -1,4 +1,4 @@
-import { AccountsComponent, MasterComponent, WebsiteComponent } from "../component";
+import { AccountsComponent, AddWebsite, MasterComponent, WebsiteComponent } from "../component";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card"
 
@@ -12,9 +12,11 @@ export const Home = () => {
                 Welcome to the LOCKZONE!
             </Card.Body>   
         </Card>  
-        <MasterComponent/>
-        <WebsiteComponent/>
-        <AccountsComponent/>
+        {/* <MasterComponent/> */}
+        
+        {/* <AccountsComponent/> */}
+        <AddWebsite/>
+        {/* <WebsiteComponent/> */}
         </> 
     );
 }
