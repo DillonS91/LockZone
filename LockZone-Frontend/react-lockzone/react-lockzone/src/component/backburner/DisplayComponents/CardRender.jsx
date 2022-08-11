@@ -9,7 +9,6 @@ export const CardRender = ({ web }) => {
     const[modalShow, setModalShow] = useState(false);
 
     const navigate = useNavigate();
-
     const navigateToUpdate = () =>{
         navigate('/update');
     }
