@@ -1,4 +1,4 @@
-import { AccordionRender, CreateNewEntryTable } from "../component";
+import { AccountsComponent, MasterComponent, WebsiteComponent } from "../component";
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card"
 
@@ -6,10 +6,15 @@ import Card from "react-bootstrap/Card"
 
 export const Home = () => {
     return( 
+        <>
         <Card style= {{width:"50%", marginLeft:"25%", justifyContent:"center"}}>
             <Card.Body>
                 Welcome to the LOCKZONE!
-            </Card.Body>
+            </Card.Body>   
         </Card>  
+        <MasterComponent/>
+        <WebsiteComponent/>
+        <AccountsComponent/>
+        </> 
     );
 }
