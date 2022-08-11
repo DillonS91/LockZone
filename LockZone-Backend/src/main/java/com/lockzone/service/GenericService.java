@@ -3,6 +3,8 @@ package com.lockzone.service;
 import java.sql.Types;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -149,6 +151,21 @@ public class GenericService {
 	
 	public Accounts saveAccounts(Accounts accounts) {
 		return accountsRepository.save(accounts);
+	}
+	
+	public Accounts updateAccounts(int id, Accounts account) {
+		if(accountsRepository.existsById(id)) {
+			account.setAccountId(id);
+			return accountsRepository.save(account);
+		}else {
+			throw new IllegalArgumentException("Id doesn't exist");
+		}
+	}
+	
+	@Transactional
+	public ResponseEntity<Void> deleteAccount(int id){
+		accountsRepository.deleteById(id);
+		return ResponseEntity.status(204).build();
 	}
 	
 }
