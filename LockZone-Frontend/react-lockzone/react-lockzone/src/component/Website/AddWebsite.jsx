@@ -4,7 +4,7 @@ import { Button, Form, Container, Row, Col, InputGroup } from 'react-bootstrap';
 
 export const AddWebsite = () => {
     const websiteNameRef = useRef();
-    const userIdRef = useRef();
+    const [userId, setUserId] = useState(1);
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = async (event) => {
@@ -16,20 +16,17 @@ export const AddWebsite = () => {
         }
         setValidated(true);
 
-        userIdRef.current.value = 1;
-
         try {
             event.preventDefault();
-            await axios.post('http://localhost:8080/websites?q=1',
+            await axios.post('http://localhost:8080/websites',
                 {
                     urlName: websiteNameRef.current.value,
                     master: {
-                        masterId: userIdRef.current.value
+                        masterId: userId
                     }
                 }
             );
             websiteNameRef.current.value = '';
-            userIdRef.current.value = '';
         } catch (err) {
             console.error(err)
         }
