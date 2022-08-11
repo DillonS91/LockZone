@@ -51,7 +51,7 @@ public class GenericService {
 		jdbcTemplate.update(authSql, new String[] {username}, new int[] {Types.VARCHAR});
 	}
 	
-	public ResponseEntity<?> findCustomerIdAuthorized(int id) {
+	public ResponseEntity<?> findCustomerIdAuthorized(int masterId) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUsername = "";
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
@@ -59,14 +59,32 @@ public class GenericService {
 		}
 		Master masterCheck = masterRepository.findByUsername(currentUsername);
 		if(authentication.getAuthorities().toArray()[0].equals(new SimpleGrantedAuthority("ROLE_USER"))) {
-			return new ResponseEntity<>(masterRepository.findById(id).get(), HttpStatus.OK);
+			return new ResponseEntity<>(masterRepository.findById(masterId).get(), HttpStatus.OK);
 		}
-		if(masterCheck.getMasterId() == id) {
-			return new ResponseEntity<>(masterRepository.findById(id).get(), HttpStatus.OK);
+		if(masterCheck.getMasterId() == masterId) {
+			return new ResponseEntity<>(masterRepository.findById(masterId).get(), HttpStatus.OK);
 			
 		}else {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
+	}
+	
+	public ResponseEntity<?> getMasterWebsites(int masterId){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username ="";
+		if(!(auth instanceof AnonymousAuthenticationToken)) {
+			username = auth.getName();
+		}
+		Master masterCheck = masterRepository.findByUsername(username);
+		if(auth.getAuthorities().toArray()[0].equals(new SimpleGrantedAuthority("ROLE_USER"))) {
+			return new ResponseEntity<>(websiteRepository.findById(masterId).get(), HttpStatus.OK);
+		}
+		if(masterCheck.getMasterId()==masterId) {
+			return new ResponseEntity<>(websiteRepository.findById(masterId), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("Unauthorized Attempt to access", HttpStatus.UNAUTHORIZED);
+		}
+		
 	}
 	
 	public Website saveWebsite(Website website) {
