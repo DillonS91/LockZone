@@ -13,10 +13,10 @@ import com.lockzone.beans.User;
 @Repository
 public interface MasterRepository extends JpaRepository<Master,Integer>{
 	//public List<Master> findAll();
-	public List<Master> findByNameLike(String name);
+	public List<Master> findByUsernameLike(String username);
 
 	@Query("Select mast, u from Master mast, User u where u.username =?1 and u.master= mast")
-	public Master findByName(String name);
+	public Master findByUsername(String username);
 	
 	public Master save(Set<Master> set);
 }

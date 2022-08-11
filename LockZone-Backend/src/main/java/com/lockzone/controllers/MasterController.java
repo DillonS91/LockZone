@@ -2,10 +2,7 @@ package com.lockzone.controllers;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,8 +26,6 @@ import com.lockzone.service.GenericService;
 @CrossOrigin(origins = "*")
 public class MasterController {
 
-	private static final Logger log = LoggerFactory.getLogger(MasterController.class);
-
 	@Autowired
 	private MasterRepository repository; 
 	
@@ -39,17 +34,17 @@ public class MasterController {
 	
 	@GetMapping
 	@ResponseBody
-	public Object findAll(@RequestParam(required = false) String name) {
-		if (name != null) {
-			return repository.findByNameLike("%" + name + "%");
+	public Object findAll(@RequestParam(required = false) String username) {
+		if (username != null) {
+			return repository.findByUsernameLike("%" + username + "%");
 		} else {
 			return repository.findAll();
 		}
 	}
 	
-	@GetMapping("/?name={name}")
-	public Master getByName(@PathVariable String name) {
-		return repository.findByName(name);
+	@GetMapping("/?username={username}")
+	public Master getByName(@PathVariable String username) {
+		return repository.findByUsername(username);
 	}
 	
 	@GetMapping("/{id}") 

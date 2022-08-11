@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lockzone.beans.User;
+import com.lockzone.data.UserRepository;
 import com.lockzone.service.GenericService;
 
 @RestController
@@ -16,6 +17,9 @@ public class UserController {
 	
 	@Autowired
 	private GenericService service;
+	
+	@Autowired
+	private UserRepository repository;
 	
 	@PostMapping("/signup")
 	public ResponseEntity<Void> save(@RequestBody User user){

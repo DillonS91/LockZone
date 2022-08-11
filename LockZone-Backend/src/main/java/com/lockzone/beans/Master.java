@@ -1,12 +1,16 @@
 package com.lockzone.beans;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "master")
@@ -17,23 +21,32 @@ public class Master {
 	@Column(name = "master_id")
 	private int masterId;
 	
-	@Column(name = "name")
-	@NotBlank
-	private String name;
+	@Column(name="username")
+	private String username;
 	
-	@Column(name = "password")
-	@NotBlank
-	private String password;
+	@Column(name = "firstName")
+	private String firstName;
+	
+	@Column(name = "lastName")
+	private String lastName;
+	
+	@Column(name = "email")
+	private String email;
+	
+	@OneToMany(mappedBy="master")
+	@JsonIgnore
+	private Set<Website> websites;
 
 	public Master() {
 		super();
 	}
 
-	public Master(int masterId, String name, String password) {
+	public Master(String username, String firstName, String lastName, String email) {
 		super();
-		this.masterId = masterId;
-		this.name = name;
-		this.password = password;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
 	}
 
 	public int getMasterId() {
@@ -44,26 +57,51 @@ public class Master {
 		this.masterId = masterId;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Set<Website> getWebsites() {
+		return websites;
+	}
+
+	public void setWebsites(Set<Website> websites) {
+		this.websites = websites;
 	}
 
 	@Override
 	public String toString() {
-		return "Master [masterId=" + masterId + ", name=" + name + ", password=" + password + "]";
+		return "Master [masterId=" + masterId + ", username=" + username + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + "]";
 	}
-	
+
 	
 }
