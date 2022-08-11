@@ -1,8 +1,10 @@
 package com.lockzone.service;
 
 import java.sql.Types;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.lockzone.beans.Accounts;
 import com.lockzone.beans.Master;
 import com.lockzone.beans.User;
 import com.lockzone.beans.Website;
@@ -38,6 +41,8 @@ public class GenericService {
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	private static final int DEFAULT_PAGE_SIZE = 10;
 	
 	public void register(User user) {
 		String hash = passwordEncoder.encode(user.getPassword());
@@ -130,6 +135,20 @@ public class GenericService {
 		}
 	}
 	
-
+	
+//	public long count() {
+//		return accountsRepository.count();
+//	}
+	
+	public List<Accounts> findAllAccountsPaged(int page) {
+		return accountsRepository.findAll(PageRequest.of(page, DEFAULT_PAGE_SIZE)).toList();
+	}
+	public List<Accounts> findAccountsByMaster(int masterId, int page){
+		return accountsRepository.findByWebsiteMasterMasterId(masterId, PageRequest.of(page, DEFAULT_PAGE_SIZE)).toList();
+	}
+	
+	public Accounts saveAccounts(Accounts accounts) {
+		return accountsRepository.save(accounts);
+	}
 	
 }

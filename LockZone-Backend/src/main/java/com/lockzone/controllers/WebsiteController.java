@@ -54,7 +54,7 @@ public class WebsiteController {
 		return service.getMasterWebsites(id);
 	}
 	
-	@PostMapping
+	@PostMapping //localhost:8080/websites
 	public Website save(@Valid @RequestBody Website website) {
 		return service.saveWebsite(website);
 	}
@@ -65,7 +65,7 @@ public class WebsiteController {
             "masterId": 1
     }
 	*/
-	@PutMapping("/{id}")
+	@PutMapping("/{id}") //localhost:8080/websites/10
 	@Transactional // Done through responseBody
 	public Website update(@RequestBody Website website, @PathVariable int id) {
 		if(websiteRepository.existsById(id)) {
@@ -76,10 +76,10 @@ public class WebsiteController {
 		}
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{id}") //localhost:8080/websites/10
 	public ResponseEntity<Void> delete(@PathVariable int id){
 		websiteRepository.deleteById(id);
-		return ResponseEntity.noContent().header("Custom-header", "dead").build();
+		return ResponseEntity.status(204).build();
 	}
 
 
