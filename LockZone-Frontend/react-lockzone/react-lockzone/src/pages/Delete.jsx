@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { EditWebsite } from '../component';
+import { DeleteWebsite } from '../component';
 
-
-export const Update = () => {
+export const Delete = () => {
     const location = useLocation();
-    const [locationState, setLocationState] = useState({masterId:'', webId:''});
+    const [locationState, setLocationState] = useState({urlName:'' ,webId:''});
 
     useEffect(()=>{
         if(location.state){
@@ -14,6 +13,6 @@ export const Update = () => {
     },[location]);
 
     return(
-        <EditWebsite locationState ={locationState}/>
+        <DeleteWebsite locationState = {locationState} />
     );
 }

@@ -13,21 +13,24 @@ export const WebsiteRowComponent = ({ web }) => {
     //     });
     // }
    
-    const handleDelete = async (event) => {
-        try{
-            event.preventDefault();
-            await axios.delete(`http://localhost:8080/websites/${web.websiteId}` )
-        }catch (err){
-            console.error(err);
-        };         
-    }
+    // const handleDelete = async (event) => {
+    //     try{
+    //         event.preventDefault();
+    //         await axios.delete(`http://localhost:8080/websites/${web.websiteId}` )
+    //     }catch (err){
+    //         console.error(err);
+    //     };         
+    // }
 
     return(
         <tr>
             <td>{web.urlName}</td>
             <td>{web.master.masterId}</td>
-            <Button onClick={handleDelete}>Delete</Button>
-            <Link to="/Update"
+            {/* <Button type='button' onClick={handleDelete}>Delete</Button> */}
+            <Link to="/delete" 
+                state={{urlName: web.urlName, webId: web.websiteId}}
+            >Delete</Link>
+            <Link to="/update"
                 state={{masterId: web.master.masterId, webId: web.websiteId}}
             >Update</Link>
         </tr>
