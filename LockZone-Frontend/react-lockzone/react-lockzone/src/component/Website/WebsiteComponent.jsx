@@ -11,7 +11,7 @@ export const WebsiteComponent = () => {
     //http://localhost:8080/websites?q=howard
     //http://localhost:8080/websites/4
     useEffect(()=>{
-        axios.get('http://localhost:8080/websites?q=danbloom')
+        axios.get('http://localhost:8080/websites?q=howard')
         .then(res => setWebsite(res.data))
     },[])
 

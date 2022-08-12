@@ -4,7 +4,7 @@ import { Button, Form, Container, Row, Col, InputGroup } from 'react-bootstrap';
 
 export const AddWebsite = () => {
     const websiteNameRef = useRef();
-    const [userId, setUserId] = useState(1);
+    const [userId, setUserId] = useState(2);
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = async (event) => {
@@ -18,7 +18,7 @@ export const AddWebsite = () => {
 
         try {
             event.preventDefault();
-            await axios.post('http://localhost:8080/websites',
+            await axios.post('http://localhost:8080/websites?q=2',
                 {
                     urlName: websiteNameRef.current.value,
                     master: {

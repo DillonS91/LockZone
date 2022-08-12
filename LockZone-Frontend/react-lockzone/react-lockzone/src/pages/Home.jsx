@@ -1,5 +1,4 @@
-import { AccountsComponent, AddWebsite, MasterComponent, WebsiteComponent } from "../component";
-import { Container } from "react-bootstrap";
+import { AddWebsite, WebsiteComponent } from "../component";
 import Card from "react-bootstrap/Card"
 
 // This is the Home page, will be directed here after login. Can access other poages from home
@@ -12,9 +11,6 @@ export const Home = () => {
                 Welcome to the LOCKZONE!
             </Card.Body>   
         </Card>  
-        {/* <MasterComponent/> */}
-        
-        {/* <AccountsComponent/> */}
         <AddWebsite/>
         <WebsiteComponent/>
         </> 

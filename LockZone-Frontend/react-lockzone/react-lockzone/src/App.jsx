@@ -59,7 +59,7 @@ function App(){
             </Container>
           </Navigation>
           <Routes>
-            <Route path='/update' element={<Update/>}/>
+            <Route path='/Update' element={<Update/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/websites' element={<Websites/>}/>
             <Route path='/accounts' element={<Accounts/>}/>
@@ -100,7 +100,7 @@ function App(){
             </Container>
           </Navigation>
           <Routes>
-            <Route path='/update' element={<Update/>}/>
+            <Route path='/Update' element={<Update/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/websites' element={<Websites/>}/>
             <Route path='/accounts' element={<Accounts/>}/>
