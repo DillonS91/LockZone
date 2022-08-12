@@ -49,7 +49,7 @@ public class WebsiteController {
 	}
 
 
-	@GetMapping("/master{id}") //localhost:8080/websites/master4
+	@GetMapping("/masterId={id}") //localhost:8080/websites/master4
 	public ResponseEntity<?> getWebsitesByMasterId(@PathVariable int id){
 		return service.getMasterWebsites(id);
 	}

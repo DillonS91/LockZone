@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import { Home, Update, Websites, Accounts, Login, SignUp } from './pages';
+import { Home, Update, Websites, Accounts, Login, SignUp, Master } from './pages';
 import { Navigation } from './component'
 import { useCookies } from "react-cookie";
 import axios from 'axios';
@@ -49,6 +49,9 @@ function App(){
                   <div className = 'nav-item'>
                     <Link className = 'nav-item' to='/websites'>Websites</Link>
                   </div>
+                  <div className = 'nav-item'>
+                    <Link className = 'nav-item' to='/master'>Master</Link>
+                  </div>
                   {/* <div className = 'nav-item'>
                     <Link className = 'nav-item' to='/accounts'>Accounts</Link>
                   </div> */}
@@ -61,6 +64,7 @@ function App(){
           <Routes>
             <Route path='/update' element={<Update/>}/>
             <Route path='/home' element={<Home/>}/>
+            <Route path='/master' element={<Master/>}/>
             <Route path='/websites' element={<Websites/>}/>
             <Route path='/accounts' element={<Accounts/>}/>
           </Routes>
