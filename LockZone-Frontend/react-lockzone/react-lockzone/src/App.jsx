@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import { Home, Update, Websites, Accounts, Login, SignUp, Master } from './pages';
+import { Home, UpdateWebsite, Websites, Accounts, Login, SignUp, Master, WebsiteAccounts } from './pages';
 import { Navigation } from './component'
 import { useCookies } from "react-cookie";
 import axios from 'axios';
@@ -47,10 +47,10 @@ function App(){
                     <Link className = 'nav-item' to='/home'>Home</Link>
                   </div>
                   <div className = 'nav-item'>
-                    <Link className = 'nav-item' to='/websites'>Websites</Link>
+                    <Link className = 'nav-item' to='/master'>Master</Link>
                   </div>
                   <div className = 'nav-item'>
-                    <Link className = 'nav-item' to='/master'>Master</Link>
+                    <Link className = 'nav-item' to='/websites'>Websites</Link>
                   </div>
                   {/* <div className = 'nav-item'>
                     <Link className = 'nav-item' to='/accounts'>Accounts</Link>
@@ -62,11 +62,12 @@ function App(){
             </Container>
           </Navigation>
           <Routes>
-            <Route path='/update' element={<Update/>}/>
+            <Route path='/update' element={<UpdateWebsite/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/master' element={<Master/>}/>
             <Route path='/websites' element={<Websites/>}/>
             <Route path='/accounts' element={<Accounts/>}/>
+            <Route path="/websites/*" element={<WebsiteAccounts />}></Route>
           </Routes>
         </BrowserRouter>   
       </>
@@ -104,7 +105,7 @@ function App(){
             </Container>
           </Navigation>
           <Routes>
-            <Route path='/update' element={<Update/>}/>
+            <Route path='/update' element={<UpdateWebsite/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/websites' element={<Websites/>}/>
             <Route path='/accounts' element={<Accounts/>}/>

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { EditWebsite } from '../component';
 
 
-export const Update = () => {
+export const UpdateWebsite = () => {
     const location = useLocation();
     const [locationState, setLocationState] = useState({masterId:'', websiteId:''});
 

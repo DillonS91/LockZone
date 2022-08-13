@@ -3,18 +3,18 @@ import { useState } from "react";
 import { Button, Modal } from 'react-bootstrap';
 
 export const DeleteWebsite = ( props ) => {
-    // const[modalShow, setModalShow] = useState();
+    const[modalShow, setModalShow] = useState();
 
-    // const handleDelete = async (event) => {
+    const handleDelete = async (event) => {
     
-    //     try{
-    //         event.preventDefault();
-    //         await axios.delete(`http://localhost:8080/websites/${props.id}` )
-    //     }catch (err){
-    //         console.error(err);
-    //     };        
+        try{
+            event.preventDefault();
+            await axios.delete(`http://localhost:8080/websites/${props.id}` )
+        }catch (err){
+            console.error(err);
+        };        
         
-    // }
+    }
 
     return(
         <></>

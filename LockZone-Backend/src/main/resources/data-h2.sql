@@ -1,5 +1,5 @@
 insert into master (username,firstName, lastName, email) values('danbloom','dan','bloom' ,'dan@gmail.com'); 
-insert into master (username,firstName, lastName, email) values('howardrot','howard','rot', 'howard@yahoo.com');
+insert into master (username,firstName, lastName, email) values('howard','howard','rot', 'howard@yahoo.com');
 
 insert into website (name, master_id) values ('http://soup.io', 1);
 insert into website (name, master_id) values ('http://yellowbook.com', 2);

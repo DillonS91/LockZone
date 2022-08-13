@@ -1,22 +1,14 @@
 import axios from 'axios';
 import { useRef, useState } from 'react';
-import { Button, Form, Container, Row, Col, InputGroup } from 'react-bootstrap';
+import { Button, Form, Card, Row, Col, InputGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 export const EditWebsite = ({locationState}) => {
     
     const nameRef = useRef();
     const [validated, setValidated] = useState(false);
-
     const navigate = useNavigate();
     const handleSubmit = async (event) => {              
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        //setValidated(true);
-
         try {
             axios.put(`http://localhost:8080/websites/${locationState.websiteId}`,
                 {
@@ -30,25 +22,21 @@ export const EditWebsite = ({locationState}) => {
             console.error(err);
         } finally {
             navigate('/websites');
+            window.location.reload(false);
         }
     }
 
     return(
-        <Container>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Row className="mb-3">
-                    <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+        <Card style={{width:"35%", marginLeft:"10%"}}>
+            <Form onSubmit={handleSubmit}>
+                <Row className="mb-1">
+                    <Form.Group as={Col} md="8">
                         <Form.Label>Website Update</Form.Label>
-                            <InputGroup hasValidation>
                                 <Form.Control type="text" placeholder="Enter a new Website here" name = 'name' ref = {nameRef} required/>
-                                <Form.Control.Feedback type="invalid">
-                                    Please provide a new website.
-                                </Form.Control.Feedback>
-                            </InputGroup>
                     </Form.Group>
                 </Row>
-                <Button type="submit">Update</Button>
+                <Button variant= "success" type="submit">Update</Button>
             </Form>
-        </Container>
+        </Card>
     );
 }

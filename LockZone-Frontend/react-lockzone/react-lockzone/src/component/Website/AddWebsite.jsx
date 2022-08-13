@@ -1,54 +1,41 @@
 import axios from "axios";
 import { useRef, useState } from "react";
-import { Button, Form, Container, Row, Col, InputGroup } from 'react-bootstrap';
+import { Button, Form, Container, Row, Col, Card } from 'react-bootstrap';
+import { useCookies } from "react-cookie";
 
-export const AddWebsite = () => {
+
+export const AddWebsite = ({website, setWebsite, renderAddWebsite, setRenderAddWebsite, master}) => {
     const websiteNameRef = useRef();
-    const [userId, setUserId] = useState(2);
-    const [validated, setValidated] = useState(false);
 
     const handleSubmit = async (event) => {
-
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        setValidated(true);
-
         try {
-            event.preventDefault();
-            await axios.post('http://localhost:8080/websites?q=2',
+            
+            const {data} = await axios.post(`http://localhost:8080/websites`,
                 {
-                    urlName: websiteNameRef.current.value,
+                    name: websiteNameRef.current.value,
                     master: {
-                        masterId: userId
+                        masterId: master.masterId
                     }
                 }
             );
-            websiteNameRef.current.value = '';
+            setWebsite([data]);
+            setRenderAddWebsite(!renderAddWebsite);
         } catch (err) {
             console.error(err)
-        }
-        
+        } 
     }
     
     return(
-        <Container>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Card.Body>
+            <Form onSubmit={handleSubmit}>
                 <Row className="mb-3">
-                    <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+                    <Form.Group as={Col} md="10">
                         <Form.Label>Website</Form.Label>
-                            <InputGroup hasValidation>
-                                <Form.Control type="text" placeholder="Please Enter a new Website" name = 'urlName' ref = {websiteNameRef} required/>
-                                <Form.Control.Feedback type="invalid">
-                                 Please choose a website.
-                                </Form.Control.Feedback>
-                            </InputGroup>
-                        </Form.Group>
+                                <Form.Control type="text" placeholder="Please Enter a new Website" name = 'name' ref = {websiteNameRef} required/>
+                    </Form.Group>
                 </Row>
                 <Button type="submit">Submit form</Button>
             </Form>
-        </Container>
+        </Card.Body>
     );
 }
