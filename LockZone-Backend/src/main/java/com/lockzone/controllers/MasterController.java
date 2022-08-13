@@ -90,8 +90,8 @@ public class MasterController {
 	
 	// Delete
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable int id) {
-		repository.deleteById(id);
+	public ResponseEntity<Void> deleteMaster(@PathVariable int id) {
+		return service.deleteMaster(id);
 	}
 	
 }

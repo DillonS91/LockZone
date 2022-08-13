@@ -1,32 +1,25 @@
 import { Table } from "react-bootstrap";
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { WebsiteRowComponent } from "./WebsiteRowComponent";
+import{WebsiteOne} from './WebsiteOne'
 
 
-export const WebsiteComponent = () => {
-    const [website, setWebsite] = useState([]);
-
-
-    //http://localhost:8080/websites?q=howard
-    //http://localhost:8080/websites/4
-    useEffect(()=>{
-        axios.get('http://localhost:8080/websites?q=danbloom')
-        .then(res => setWebsite(res.data))
-    },[])
-
-    return(
-        <Table>   
-            <thead>
-                <tr>
-                    <th>Websites</th>
-                </tr>
-            </thead>
-            <tbody>
-                {website && website.map((web) => {
-                   return <WebsiteRowComponent key={web.websiteId} web={web}/>;
-                })}
-            </tbody>
-        </Table>
-    );
+export const WebsiteComponent = ({websites}) => {
+    return (
+        <Table striped border="5" hover >               
+                <thead>
+                    <tr>
+                        <th>Urlname</th>  
+                        <th>EDIT</th>
+                        <th>DELETE</th>          
+                    </tr>
+                </thead>
+                <tbody>
+                    {websites.map((website) => {
+                            return (
+                                <WebsiteOne key={website.websiteId} website={website}/>
+                            );
+                    })}
+                </tbody>
+    
+            </Table>
+      )
 }

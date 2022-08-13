@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { MasterRowComponent } from "./MasterRowComponent";
@@ -25,4 +26,30 @@ export const MasterComponent = () => {
             </tbody>
         </Table>
     );
+=======
+import {Table} from 'react-bootstrap';
+import {MasterOne} from './MasterOne';
+
+export const MasterComponent = ({master}) =>{
+    return(
+        <Table striped border hover>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>                
+                </tr>
+            </thead>
+        <tbody>
+            {master.map((master) =>{
+                return(
+                    <MasterOne key={master.masterId} master={master}/>
+            );
+        })}
+            
+        </tbody>
+        </Table>
+    )
+>>>>>>> cf8f1ec6b8e284d3302b4a760e28ed47dd98a97a
 }

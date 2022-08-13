@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lockzone.beans.Accounts;
+import com.lockzone.data.AccountsRepository;
 import com.lockzone.service.GenericService;
 
 @RestController
@@ -25,7 +26,8 @@ import com.lockzone.service.GenericService;
 @CrossOrigin(origins = "*")
 public class AccountsController {
 
-	
+	@Autowired
+	private AccountsRepository accountsRepository;
 	@Autowired 
 	private GenericService service;
 		
@@ -33,6 +35,7 @@ public class AccountsController {
 	public List<Accounts> findAll(@RequestParam(defaultValue="0") int page){
 		return service.findAllAccountsPaged(page);
 	}
+
 	
 	@GetMapping("/master/{master_id}/{page}") //localhost:8080/accounts/master/1/0 PAGENATION for accounts
 	public List<Accounts> pageableAccountsByMaster(@PathVariable int master_id,@PathVariable int page){

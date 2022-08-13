@@ -1,5 +1,7 @@
 package com.lockzone.data;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +20,5 @@ public interface AccountsRepository extends PagingAndSortingRepository<Accounts,
 	@Transactional(propagation = Propagation.NEVER)
 	@Query("from Accounts acc inner join acc.website web inner join web.master mas")
 	public Page<Accounts> findAllAccountsPaged(Pageable request);
+	
 }
