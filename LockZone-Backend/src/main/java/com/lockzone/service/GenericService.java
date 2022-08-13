@@ -168,4 +168,10 @@ public class GenericService {
 		return ResponseEntity.status(204).build();
 	}
 	
+	@Transactional
+	public ResponseEntity<Void> deleteMaster(int id) {
+		masterRepository.deleteById(id);
+		return ResponseEntity.status(204).build();
+	}
+	
 }

@@ -5,10 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,7 +16,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lockzone.beans.Website;
@@ -38,9 +33,17 @@ public class WebsiteController {
 	@Autowired
 	private GenericService service;
 
-	@GetMapping // localhost:8080/websites?q=danbloom
+	@GetMapping
+	public List<Website> getAllWebsites(){
+		return websiteRepository.findAll();
+	}
+	@GetMapping("/find") // localhost:8080/websites?q=danbloom
 	public List<Website> getWebsites(@RequestParam(name = "q", required = true) String name) {
 		return websiteRepository.findByMasterUsername(name);
+	}
+	@GetMapping("/like")
+	public List<Website> findUrlNameLike(@RequestParam String urlname){
+		return websiteRepository.findByurlNameLike("%" + urlname+  "%");
 	}
 
 	@GetMapping("/{id}")
@@ -48,10 +51,10 @@ public class WebsiteController {
 		return ResponseEntity.ok(websiteRepository.findById(id).orElse(new Website()));
 	}
 
-
-	@GetMapping("/masterId={id}") //localhost:8080/websites/master4
-	public ResponseEntity<?> getWebsitesByMasterId(@PathVariable int id){
-		return service.getMasterWebsites(id);
+	@GetMapping("/masterId={id}") //localhost:8080/websites/masterid=4
+	public List<Website> findByMaster(@PathVariable int id){
+		//return service.getMasterWebsites(id);
+		return websiteRepository.findByMasterId(id);
 	}
 	
 	@PostMapping //localhost:8080/websites
@@ -82,5 +85,5 @@ public class WebsiteController {
 		return ResponseEntity.status(204).build();
 	}
 
-
+	
 }

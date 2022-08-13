@@ -35,5 +35,5 @@ create table accounts (
 create table authorities (
 	username VARCHAR(50) not null,
 	authority VARCHAR(50) not null,
-	foreign key (username) references users(username) 
+	foreign key (username) references users(username) ON DELETE CASCADE
 );
