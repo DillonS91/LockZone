@@ -12,7 +12,7 @@ export const WebsiteOne =({website}) =>{
     return (
 
         <tr onClick={handleClick}>
-          <td>{website.urlName}</td>
+          <td>{website.name}</td>
         </tr>
       )
 }

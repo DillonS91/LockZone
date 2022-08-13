@@ -1,16 +1,16 @@
 insert into master (username,firstName, lastName, email) values('danbloom','dan','bloom' ,'dan@gmail.com'); 
 insert into master (username,firstName, lastName, email) values('howardrot','howard','rot', 'howard@yahoo.com');
 
-insert into website (urlname, master_id) values ('http://soup.io', 1);
-insert into website (urlname, master_id) values ('http://yellowbook.com', 2);
-insert into website (urlname, master_id) values ('https://purevolume.com', 2);
-insert into website (urlname, master_id) values ('http://nationalgeographic.com', 2);
-insert into website (urlname, master_id) values ('https://lulu.com', 2);
-insert into website (urlname, master_id) values ('http://gmpg.org', 2);
-insert into website (urlname, master_id) values ('https://wsj.com', 2);
-insert into website (urlname, master_id) values ('http://google.com.br', 2);
-insert into website (urlname, master_id) values ('http://timesonline.co.uk', 2);
-insert into website (urlname, master_id) values ('http://cbc.ca', 1);
+insert into website (name, master_id) values ('http://soup.io', 1);
+insert into website (name, master_id) values ('http://yellowbook.com', 2);
+insert into website (name, master_id) values ('https://purevolume.com', 2);
+insert into website (name, master_id) values ('http://nationalgeographic.com', 2);
+insert into website (name, master_id) values ('https://lulu.com', 2);
+insert into website (name, master_id) values ('http://gmpg.org', 2);
+insert into website (name, master_id) values ('https://wsj.com', 2);
+insert into website (name, master_id) values ('http://google.com.br', 2);
+insert into website (name, master_id) values ('http://timesonline.co.uk', 2);
+insert into website (name, master_id) values ('http://cbc.ca', 1);
 
 insert into accounts (accnames, accpassword, website_Id) values ('Kerby', 'LYc5a5gaNCE', 1);
 insert into accounts (accnames, accpassword, website_Id) values ('Glenden', '1X1GWJEm7', 2);
@@ -34,8 +34,8 @@ insert into accounts (accnames, accpassword, website_Id) values ('Cullen', 'uo4t
 insert into accounts (accnames, accpassword, website_Id) values ('Salaidh', 'zkedBULCV2n', 10);
 
 
-insert into Users(username,password,enabled,master_id) values('danbloom','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa', true,1);
-insert into Users(username,password,enabled,master_id) values('howard','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa',true,2);
+insert into Users(username,password,enabled,userid,master_id) values('danbloom','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa', true,1,1);
+insert into Users(username,password,enabled,userid,master_id) values('howard','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa',true,2,2);
 
 insert into authorities values('danbloom', 'ROLE_USER');
 insert into authorities values('howard', 'ROLE_USER');

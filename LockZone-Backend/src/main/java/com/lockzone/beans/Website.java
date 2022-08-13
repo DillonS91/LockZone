@@ -27,8 +27,8 @@ public class Website {
 	@Column(name = "website_id")
 	private int websiteId;
 	
-	@Column(name = "urlname")
-	private String urlName;
+	@Column(name = "name")
+	private String name;
 	
 	@ManyToOne
 	@JoinColumn(name = "master_id")
@@ -42,10 +42,10 @@ public class Website {
 		super();
 	}
 
-	public Website(int websiteId, String urlName, Master master) {
+	public Website(int websiteId, String name, Master master) {
 		super();
 		this.websiteId = websiteId;
-		this.urlName = urlName;
+		this.name = name;
 		this.master = master;
 	}
 
@@ -65,12 +65,12 @@ public class Website {
 		this.websiteId = websiteId;
 	}
 
-	public String getUrlName() {
-		return urlName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUrlName(String urlName) {
-		this.urlName = urlName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Master getMaster() {
@@ -83,7 +83,7 @@ public class Website {
 
 	@Override
 	public String toString() {
-		return "Website [websiteId=" + websiteId + ", urlName=" + urlName + "]";
+		return "Website [websiteId=" + websiteId + ", name=" + name + "]";
 	}
 	
 	

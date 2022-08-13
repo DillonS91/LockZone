@@ -4,7 +4,7 @@ import{WebsiteOne} from './WebsiteOne'
 
 export const WebsiteComponent = ({websites}) => {
     return (
-        <Table striped bordered hover>               
+        <Table striped border="5" hover >               
                 <thead>
                     <tr>
                         <th>Urlname</th>            

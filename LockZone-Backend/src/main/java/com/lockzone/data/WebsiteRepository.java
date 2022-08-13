@@ -19,5 +19,5 @@ public interface WebsiteRepository extends JpaRepository<Website, Integer>{
 	//@Transactional(propagation = Propagation.SUPPORTS)
 	//public Website save(Website website);
 	
-	public List<Website> findByurlNameLike(String string);
+	public List<Website> findByNameLike(String string);
 }

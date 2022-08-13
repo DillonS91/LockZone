@@ -38,12 +38,12 @@ public class WebsiteController {
 		return websiteRepository.findAll();
 	}
 	@GetMapping("/find") // localhost:8080/websites?q=danbloom
-	public List<Website> getWebsites(@RequestParam(name = "q", required = true) String name) {
+	public List<Website> getWebsites(@RequestParam String name) {
 		return websiteRepository.findByMasterUsername(name);
 	}
 	@GetMapping("/like")
-	public List<Website> findUrlNameLike(@RequestParam String urlname){
-		return websiteRepository.findByurlNameLike("%" + urlname+  "%");
+	public List<Website> findNameLike(@RequestParam String name){
+		return websiteRepository.findByNameLike("%" + name+  "%");
 	}
 
 	@GetMapping("/{id}")

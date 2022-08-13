@@ -8,7 +8,7 @@ create table master (
  	
 create table website (
   website_id int NOT NULL AUTO_INCREMENT primary key,
-  urlname varchar(100) DEFAULT NULL,
+  name varchar(100) DEFAULT NULL,
   master_id int NOT NULL,
   
   foreign key (master_id) references master(master_id) ON DELETE CASCADE
@@ -27,6 +27,7 @@ create table accounts (
 	username VARCHAR(50) Primary Key,
 	password VARCHAR(100) not null,
 	enabled boolean not null,
+	userid int NOT NULL AUTO_INCREMENT,
 	master_id INT,
 	
 	foreign key (master_id) references master(master_id) ON DELETE CASCADE

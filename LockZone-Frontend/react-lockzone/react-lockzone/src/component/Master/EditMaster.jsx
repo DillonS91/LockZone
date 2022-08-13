@@ -33,8 +33,8 @@ return(
         <Card.Body>
             <Form onSubmit={handleSubmit}>
                 <Form.Group>
-                    <Form.Label>Master Username</Form.Label>
-                    <Form.Control name="username" ref={masterNameRef} placeholder={master.username} defaultValue={master.username}/>
+                    <Form.Label>Master Username Cannot be Changed</Form.Label>
+                    <Form.Control name="username" ref={masterNameRef} placeholder={master.username} defaultValue={master.username} disabled readOnly/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>First Name</Form.Label>
