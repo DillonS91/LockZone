@@ -13,8 +13,7 @@ export const Home = () => {
                 Welcome to the LOCKZONE!
             </Card.Body>   
         </Card>  
-        <AddWebsite/>
-        <WebsiteComponent/>
+        
         
         </> 
     );
