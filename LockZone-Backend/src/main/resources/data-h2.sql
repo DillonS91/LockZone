@@ -34,8 +34,8 @@ insert into accounts (accnames, accpassword, website_Id) values ('Cullen', 'uo4t
 insert into accounts (accnames, accpassword, website_Id) values ('Salaidh', 'zkedBULCV2n', 10);
 
 
-insert into Users(username,password,enabled,userid,master_id) values('danbloom','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa', true,1,1);
-insert into Users(username,password,enabled,userid,master_id) values('howard','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa',true,2,2);
+insert into Users(username,password,enabled,master_id) values('danbloom','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa', true,1);
+insert into Users(username,password,enabled,master_id) values('howard','$2a$10$cdgz.UZwwTnvQsjGLgJ98./0FGov/rvmXJH2et2mRZy.SZYiDpgWa',true,2);
 
 insert into authorities values('danbloom', 'ROLE_USER');
 insert into authorities values('howard', 'ROLE_USER');

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const EditWebsite = ({locationState}) => {
     
-    const urlNameRef = useRef();
+    const nameRef = useRef();
     const [validated, setValidated] = useState(false);
 
     const navigate = useNavigate();
@@ -15,12 +15,12 @@ export const EditWebsite = ({locationState}) => {
             event.preventDefault();
             event.stopPropagation();
         }
-        setValidated(true);
+        //setValidated(true);
 
         try {
-            axios.put(`http://localhost:8080/websites/${locationState.webId}`,
+            axios.put(`http://localhost:8080/websites/${locationState.websiteId}`,
                 {
-                    urlName: urlNameRef.current.value,
+                    name: nameRef.current.value,
                     master: {
                         masterId: locationState.masterId
                     }
@@ -29,7 +29,7 @@ export const EditWebsite = ({locationState}) => {
         } catch (err) {
             console.error(err);
         } finally {
-            navigate('/home');
+            navigate('/websites');
         }
     }
 
@@ -40,12 +40,12 @@ export const EditWebsite = ({locationState}) => {
                     <Form.Group as={Col} md="4" controlId="validationCustomUsername">
                         <Form.Label>Website Update</Form.Label>
                             <InputGroup hasValidation>
-                                <Form.Control type="text" placeholder="Enter a new Website here" name = 'urlName' ref = {urlNameRef} required/>
+                                <Form.Control type="text" placeholder="Enter a new Website here" name = 'name' ref = {nameRef} required/>
                                 <Form.Control.Feedback type="invalid">
                                     Please provide a new website.
                                 </Form.Control.Feedback>
                             </InputGroup>
-                        </Form.Group>
+                    </Form.Group>
                 </Row>
                 <Button type="submit">Update</Button>
             </Form>

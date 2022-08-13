@@ -7,7 +7,9 @@ export const WebsiteComponent = ({websites}) => {
         <Table striped border="5" hover >               
                 <thead>
                     <tr>
-                        <th>Urlname</th>            
+                        <th>Urlname</th>  
+                        <th>EDIT</th>
+                        <th>DELETE</th>          
                     </tr>
                 </thead>
                 <tbody>

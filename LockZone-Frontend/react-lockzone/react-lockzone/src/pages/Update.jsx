@@ -1,12 +1,19 @@
-import { Container } from "react-bootstrap";
-import { SubmissionTableAccount } from "../component";
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { EditWebsite } from '../component';
 
-// This is the Login page, will be first page the user sees
 
 export const Update = () => {
+    const location = useLocation();
+    const [locationState, setLocationState] = useState({masterId:'', websiteId:''});
+
+    useEffect(()=>{
+        if(location.state){
+            setLocationState(location.state)
+        }
+    },[location]);
+
     return(
-        <Container>
-            <SubmissionTableAccount/>
-        </Container>
+        <EditWebsite locationState ={locationState}/>
     );
 }
