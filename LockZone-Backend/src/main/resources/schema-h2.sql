@@ -27,7 +27,6 @@ create table accounts (
 	username VARCHAR(50) Primary Key,
 	password VARCHAR(100) not null,
 	enabled boolean not null,
-	userid int NOT NULL AUTO_INCREMENT,
 	master_id INT,
 	
 	foreign key (master_id) references master(master_id) ON DELETE CASCADE
