@@ -23,7 +23,7 @@ export const WebsiteAccounts = () =>{
         
             return(
                 <>
-                    <h1 style={{textAlign:"center"}}>Accounts for Clicked Website</h1>  
+                    <h1 style={{textAlign:"center"}}>Accounts for Website</h1>  
                     <Table striped bordered hover>
                         <thead>
                             <tr>

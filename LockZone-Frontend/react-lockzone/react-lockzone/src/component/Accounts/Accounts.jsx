@@ -12,7 +12,7 @@ export const Accounts =({acc}) =>{
             <td>{acc.accnames}</td>
             <td>{acc.accpassword}</td>
             <td>
-                <Link to="/updateAcc" state={{masterId: acc.website.master.masterId, websiteId: acc.website.websiteId}}><Button variant="primary">Update</Button></Link>
+                <Link to="/updateAcc" state={{masterId: acc.website.master.masterId, websiteId: acc.website.websiteId, accountId: acc.accountId}}><Button variant="primary">Update</Button></Link>
             </td>
             <td>  
                 <Link to="/deleteAcc" state={{accountId: acc.accountId}}><Button variant="danger">Delete</Button></Link>
