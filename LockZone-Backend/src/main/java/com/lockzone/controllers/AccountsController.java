@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lockzone.beans.Accounts;
-import com.lockzone.beans.Website;
 import com.lockzone.data.AccountsRepository;
 import com.lockzone.service.AESService;
 import com.lockzone.service.GenericService;
@@ -26,9 +25,9 @@ import com.lockzone.service.GenericService;
 @RequestMapping("/accounts")
 @CrossOrigin(origins = "*")
 public class AccountsController {
+	
 	@Autowired
 	private AESService aesService;
-	
 	
 	@Autowired
 	private AccountsRepository accountsRepository;
@@ -42,7 +41,17 @@ public class AccountsController {
 //	}
 	@GetMapping("/websiteId={id}") //localhost:8080/websites/masterid=4
 	public List<Accounts> findByMaster(@PathVariable int id){
-		return accountsRepository.findByWebsiteId(id);
+		List<Accounts> accounts = accountsRepository.findByWebsiteId(id);
+		try {
+			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+			for (Accounts acc: accounts) {
+				acc.setAccpassword(aesService.decrypt(acc.getAccpassword()));
+			}
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		return accounts;
+//		return accountsRepository.findByWebsiteId(id);
 	}
 	
 //	@GetMapping("/websiteId={id}")
@@ -53,7 +62,17 @@ public class AccountsController {
 	
 	@GetMapping("/master/{master_id}/{page}") //localhost:8080/accounts/master/1/0 PAGENATION for accounts
 	public List<Accounts> pageableAccountsByMaster(@PathVariable int master_id,@PathVariable int page){
-		return service.findAccountsByMaster(master_id, page);
+		List<Accounts> accounts = service.findAccountsByMaster(master_id, page);
+		try {
+			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+			for (Accounts acc: accounts) {
+				acc.setAccpassword(aesService.decrypt(acc.getAccpassword()));
+			}
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		return accounts;
+//		return service.findAccountsByMaster(master_id, page);
 	}
 	
 	
@@ -69,25 +88,24 @@ public class AccountsController {
 //	}
 	@PostMapping
 	public Accounts create(@Valid @RequestBody Accounts account) {
-		try {
-			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
-			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
-		} catch ( Exception e ) {
-			e.printStackTrace();
-		}
-		
+//		try {
+//			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+//			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
+//		} catch ( Exception e ) {
+//			e.printStackTrace();
+//		}
 		return service.saveAccounts(account);
 	}
 	
 	//Same RequestBody as Post
 	@PutMapping("/{id}") //localhost:8080/accounts/1
 	public Accounts updateAccounts(@RequestBody Accounts account, @PathVariable int id) {
-		try {
-			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
-			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
-		} catch ( Exception e ) {
-			e.printStackTrace();
-		}
+//		try {
+//			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+//			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
+//		} catch ( Exception e ) {
+//			e.printStackTrace();
+//		}
 		return service.updateAccounts(id, account);
 	}
 	
