@@ -19,15 +19,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lockzone.beans.Accounts;
 import com.lockzone.beans.Website;
 import com.lockzone.data.AccountsRepository;
+import com.lockzone.service.AESService;
 import com.lockzone.service.GenericService;
 
 @RestController
 @RequestMapping("/accounts")
 @CrossOrigin(origins = "*")
 public class AccountsController {
-
+	@Autowired
+	private AESService aesService;
+	
+	
 	@Autowired
 	private AccountsRepository accountsRepository;
+	
 	@Autowired 
 	private GenericService service;
 		
@@ -64,12 +69,25 @@ public class AccountsController {
 //	}
 	@PostMapping
 	public Accounts create(@Valid @RequestBody Accounts account) {
+		try {
+			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		
 		return service.saveAccounts(account);
 	}
 	
 	//Same RequestBody as Post
 	@PutMapping("/{id}") //localhost:8080/accounts/1
 	public Accounts updateAccounts(@RequestBody Accounts account, @PathVariable int id) {
+		try {
+			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
 		return service.updateAccounts(id, account);
 	}
 	
@@ -78,3 +96,38 @@ public class AccountsController {
 		return service.deleteAccount(id);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
