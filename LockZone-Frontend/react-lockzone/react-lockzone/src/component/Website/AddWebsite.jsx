@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react";
-import { Button, Form, Container, Row, Col, Card } from 'react-bootstrap';
-import { useCookies } from "react-cookie";
+import { Button, Form, Row, Col, Card } from 'react-bootstrap';
 
 
 export const AddWebsite = ({website, setWebsite, renderAddWebsite, setRenderAddWebsite, master}) => {

@@ -8,4 +8,5 @@ export * from './Master';
 export * from './WebsiteAccounts'; 
 export * from './DeleteAcc';
 export * from './UpdateAcc';
+export * from './CreateAcc';
 
