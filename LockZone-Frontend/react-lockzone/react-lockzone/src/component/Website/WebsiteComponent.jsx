@@ -36,9 +36,6 @@ export const WebsiteComponent = ({websites}) => {
                         );
                 })}
             </tbody>
-            {/* <tbody>
-                <button variant="primary" onClick={handleClick} >Create New Account</button>
-            </tbody> */}
             {renderAddWebsite && <AddWebsite website={website} setWebsite={setWebsite} renderAddWebsite= {renderAddWebsite} setRenderAddWebsite={setRenderAddWebsite} master={master}/>}
             {!renderAddWebsite && <div><Button onClick={() => setRenderAddWebsite(!renderAddWebsite)}>Create New Website</Button></div>}
         </Table>

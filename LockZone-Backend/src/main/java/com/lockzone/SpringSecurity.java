@@ -44,6 +44,8 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().mvcMatchers("/**").permitAll();
 		http.authorizeRequests().mvcMatchers("/register").permitAll();
 		http.authorizeRequests().mvcMatchers("/logout").permitAll();
+		http.authorizeRequests().mvcMatchers("/updateWeb").permitAll();
+		http.authorizeRequests().mvcMatchers("/deleteweb").permitAll();
 		http.authorizeRequests().mvcMatchers("/master/**").hasAnyRole("USER");
 		http.authorizeRequests().mvcMatchers("/websites/**").hasAnyRole("USER");
 		http.authorizeRequests().mvcMatchers("/accounts/**").hasAnyRole("USER");

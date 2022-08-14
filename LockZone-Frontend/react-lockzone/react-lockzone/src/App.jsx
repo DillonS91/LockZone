@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import { Home, UpdateWebsite, Websites, Accounts, Login, SignUp, Master, WebsiteAccounts } from './pages';
+import { Home, UpdateWebsite, Websites, Accounts, Login, SignUp, Master, WebsiteAccounts, Deleteweb } from './pages';
 import { Navigation } from './component'
 import { useCookies } from "react-cookie";
 import axios from 'axios';
@@ -62,12 +62,13 @@ function App(){
             </Container>
           </Navigation>
           <Routes>
-            <Route path='/update' element={<UpdateWebsite/>}/>
+            <Route path='/updateWeb' element={<UpdateWebsite/>}/>
+            <Route path='/deleteweb' element={<Deleteweb/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/master' element={<Master/>}/>
             <Route path='/websites' element={<Websites/>}/>
             <Route path='/accounts' element={<Accounts/>}/>
-            <Route path="/websites/*" element={<WebsiteAccounts />}></Route>
+            <Route path="/websites/*" element={<WebsiteAccounts/>}></Route>
           </Routes>
         </BrowserRouter>   
       </>
@@ -87,12 +88,6 @@ function App(){
                     <Link className = 'nav-item' to='/home'>Home</Link>
                   </div>
                   
-                  {/* <div className = 'nav-item'>
-                    <Link className = 'nav-item' to='/websites'>Websites</Link>
-                  </div> */}
-                  {/* <div className = 'nav-item'>
-                    <Link className = 'nav-item' to='/accounts'>Accounts</Link>
-                  </div> */}
                 </Nav>
                 <Nav>
                 <div classname = 'nav-item'>

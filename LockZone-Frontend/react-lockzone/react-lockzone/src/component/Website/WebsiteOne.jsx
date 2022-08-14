@@ -11,13 +11,12 @@ export const WebsiteOne =({website}) =>{
   }
     return (
         <tr>
-          {/* <td>{website.name}</td> */}
           <td onClick={handleClick}>{website.name}</td>
           <td>
-              <Link to="/update" state={{masterId: website.master.masterId, websiteId: website.websiteId}}><Button variant="primary">Update</Button></Link>
+              <Link to="/updateWeb" state={{masterId: website.master.masterId, websiteId: website.websiteId}}><Button variant="primary">Update</Button></Link>
           </td>
           <td>  
-              <Link to="/home" state={{name: website.name, webId: website.websiteId}}><Button variant="danger">Delete</Button></Link>
+              <Link to="/deleteweb" state={{websiteId: website.websiteId}}><Button variant="danger">Delete</Button></Link>
           </td>
         </tr>
       )

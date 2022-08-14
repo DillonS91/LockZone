@@ -1,36 +1,33 @@
 import axios from "axios";
-import { useState } from "react";
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Card, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-export const DeleteWebsite = ( props ) => {
-    const[modalShow, setModalShow] = useState();
-
-    const handleDelete = async (event) => {
-    
+export const DeleteWebsite = ({locationState}) => {
+    const navigate = useNavigate();
+    const handleSubmit = async (event) => {
         try{
-            event.preventDefault();
-            await axios.delete(`http://localhost:8080/websites/${props.id}` )
-        }catch (err){
+            axios.delete(`http://localhost:8080/websites/${locationState.websiteId}`)
+            
+        }catch(err){
+            console.log('hello')
             console.error(err);
-        };        
-        
+        }finally {
+            navigate('/websites');
+            window.location.reload(false);
+        }
     }
-
     return(
-        <></>
-        // <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter' centered>
-        //     <Modal.Header closeButton>
-        //         <Modal.Title id='contained-modal-title-vcenter'>
-        //             Deletion
-        //         </Modal.Title>
-        //     </Modal.Header>
-        //     <Modal.Body>
-        //         Are you sure you want to delete this Website {props.id}?
-        //         <div>
-        //             <Button class='close' onClick={handleDelete()}>Delete</Button>
-        //             <Button onClick={props.onHide}>Cancel</Button>
-        //         </div>
-        //     </Modal.Body>
-        // </Modal>
-    );
+        <Card style={{width:"35%", marginLeft:"10%"}}>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Label>Click if you want to delete this website</Form.Label>
+                </Form.Group>
+                <Form.Group>
+                <Button variant = "danger" type= "submit">
+                    Delete Website
+                </Button>
+                </Form.Group>
+            </Form>
+        </Card>
+    )
 }

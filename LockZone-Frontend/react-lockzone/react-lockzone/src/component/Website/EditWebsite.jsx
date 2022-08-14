@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useRef, useState } from 'react';
-import { Button, Form, Card, Row, Col, InputGroup } from 'react-bootstrap';
+import { Button, Form, Card, Row, Col} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 export const EditWebsite = ({locationState}) => {
@@ -10,7 +10,7 @@ export const EditWebsite = ({locationState}) => {
     const navigate = useNavigate();
     const handleSubmit = async (event) => {              
         try {
-            axios.put(`http://localhost:8080/websites/${locationState.websiteId}`,
+            axios.put(`http://localhost:8080/websites${locationState.websiteId}`,
                 {
                     name: nameRef.current.value,
                     master: {

@@ -1,7 +1,5 @@
-import { AccountsComponent, MasterComponent, WebsiteComponent } from "../component";
-import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card"
-import { AddWebsite } from "../component/Website/AddWebsite";
+
 
 // This is the Home page, will be directed here after login. Can access other poages from home
 

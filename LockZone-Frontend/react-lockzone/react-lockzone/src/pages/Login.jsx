@@ -7,8 +7,6 @@ import axios from "axios";
 export const Login = () => {
     const nameRef = useRef('');
     const passwordRef = useRef('');
-    
-
     const[,setCookie] = useCookies('Master')
     const[errorMessage, setErrorMessage] = useState('');
 
@@ -23,7 +21,7 @@ export const Login = () => {
             setCookie('Customer', res.data.customer);
             window.location.href = "http://localhost:3000/master"
         }).catch(e =>{
-            setErrorMessage('Incorrect Login')
+            setErrorMessage(`Incorrect Login or Account doesn't exist`)
         });
     }
     return(
