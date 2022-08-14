@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lockzone.beans.Accounts;
+import com.lockzone.beans.Website;
 import com.lockzone.data.AccountsRepository;
 import com.lockzone.service.GenericService;
 
@@ -31,11 +31,14 @@ public class AccountsController {
 	@Autowired 
 	private GenericService service;
 		
-	@GetMapping //localhost:8080/accounts?page0
-	public List<Accounts> findAll(@RequestParam(defaultValue="0") int page){
-		return service.findAllAccountsPaged(page);
+//	@GetMapping //localhost:8080/accounts?page0
+//	public List<Accounts> findAll(@RequestParam(defaultValue="0") int page){
+//		return service.findAllAccountsPaged(page);
+//	}
+	@GetMapping("/websiteId={id}") //localhost:8080/websites/masterid=4
+	public List<Accounts> findByMaster(@PathVariable int id){
+		return accountsRepository.findByWebsiteId(id);
 	}
-
 	
 	@GetMapping("/master/{master_id}/{page}") //localhost:8080/accounts/master/1/0 PAGENATION for accounts
 	public List<Accounts> pageableAccountsByMaster(@PathVariable int master_id,@PathVariable int page){
