@@ -88,24 +88,24 @@ public class AccountsController {
 //	}
 	@PostMapping
 	public Accounts create(@Valid @RequestBody Accounts account) {
-//		try {
-//			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
-//			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
-//		} catch ( Exception e ) {
-//			e.printStackTrace();
-//		}
+		try {
+			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
 		return service.saveAccounts(account);
 	}
 	
 	//Same RequestBody as Post
 	@PutMapping("/{id}") //localhost:8080/accounts/1
 	public Accounts updateAccounts(@RequestBody Accounts account, @PathVariable int id) {
-//		try {
-//			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
-//			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
-//		} catch ( Exception e ) {
-//			e.printStackTrace();
-//		}
+		try {
+			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
 		return service.updateAccounts(id, account);
 	}
 	

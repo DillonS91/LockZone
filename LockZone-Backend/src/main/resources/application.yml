@@ -1,12 +1,12 @@
 spring:
-  sql:
-    init:
-      platform: h2
-  jpa: 
+  datasource:
+    url: jdbc:mysql://localhost:3306/lockzone_test
+    username: root
+    password: root
+  jpa:
     show-sql: true
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       ddl-auto: none
-
       
