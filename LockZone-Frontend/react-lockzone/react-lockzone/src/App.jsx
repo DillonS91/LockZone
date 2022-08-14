@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import { Home, UpdateWebsite, Websites, Accounts, Login, SignUp, Master, WebsiteAccounts, Deleteweb } from './pages';
+import { Home, UpdateWebsite, Websites, Login, SignUp, Master, WebsiteAccounts, Deleteweb } from './pages';
 import { Navigation } from './component'
 import { useCookies } from "react-cookie";
 import axios from 'axios';
@@ -67,7 +67,7 @@ function App(){
             <Route path='/home' element={<Home/>}/>
             <Route path='/master' element={<Master/>}/>
             <Route path='/websites' element={<Websites/>}/>
-            <Route path='/accounts' element={<Accounts/>}/>
+            
             <Route path="/websites/*" element={<WebsiteAccounts/>}></Route>
           </Routes>
         </BrowserRouter>   
@@ -103,7 +103,7 @@ function App(){
             <Route path='/update' element={<UpdateWebsite/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/websites' element={<Websites/>}/>
-            <Route path='/accounts' element={<Accounts/>}/>
+            
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<SignUp/>}/>
           </Routes>

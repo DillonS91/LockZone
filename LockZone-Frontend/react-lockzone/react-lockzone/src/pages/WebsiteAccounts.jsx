@@ -3,54 +3,45 @@ import axios from "axios";
 import {useLocation} from 'react-router-dom';
 import { CustomerPackage } from "../component/Website/WebsiteComponent";
 import { Card, Table} from "react-bootstrap";
+import {AccountsShow} from "../component/Accounts/AccountsShow"
+import {Accounts} from "../component/Accounts/Accounts"
 
 import { EditWebsite } from "../component/Website/EditWebsite";
 
-export const WebsiteAccounts = ({locationState, websites}) =>{
+export const WebsiteAccounts = () =>{
     
-    const [master, setMaster] = useState([]);
+    const [mode, setMode] = useState('read')
     const [website, setWebsite] = useState([]);
     const [accounts, setAccounts] = useState([]);
 
-    const [renderEditWebsite, setRenderEditWebsite] = useState(false);
 
-    const getData = async() =>{
-        const res = await axios.get(`http:localhost:8080/accounts/websiteId=${locationState.websiteId}`);
-        setAccounts(res.data);
-    }
-    return(
-        <>
+    useEffect(() =>{
+        axios.get(`http://localhost:8080/accounts/websiteId=${window.location.href.charAt(window.location.href.length - 1)}`)
+        .then(res =>setAccounts(res.data));
+    },[])
+
         
-            <Card style = {{width: "50%", alignContent:"center", marginLeft:"25%"}}>
-                {!renderEditWebsite && <>
-                    <Card.Header style = {{textAlign: "center"}}>Accounts for this website</Card.Header>
-                    <Card.Body style = {{textAlign:"center"}}>
-                        <div>Hello</div>
-                        <div>{website.name}</div>
-                    </Card.Body> 
-                </>}
-                {
-                    renderEditWebsite &&
-                    <EditWebsite website={website} setWebsite={setWebsite} renderEditWebsite={renderEditWebsite} setRenderEditWebsite = {setRenderEditWebsite} />
-                }
-
-                    {/* <Table striped bordered hover>
+            return(
+                <>
+                    <h1 style={{textAlign:"center"}}>Accounts for Clicked Website</h1>  
+                    <Table striped bordered hover>
                         <thead>
                             <tr>
-                                <th>Account Name</th>
-                                <th>Password</th>
+                                <td>Website Name</td>
+                                <td>Account Name</td>
+                                <td>Account Password</td>       
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>test</th>
-                                <th>test2</th>
-                            </tr>
+                            {accounts.map((acc)=>{
+                                return (
+                                    <Accounts key={acc.accountId} acc={acc}/>
+                                );
+                                    
+                            })}
                         </tbody>
-                    </Table> */}
-               
-
-            </Card>
-        </>
-    );
+                    </Table>   
+                </>
+            );
+        
 }

@@ -20,7 +20,10 @@ export const AccountsComponent = () => {
             </thead>
             <tbody>
                 {account.map((acc)=>{
-                    return <AccountRowComponent key={acc.accountId} acc={acc}/>;
+                    return (
+                        <AccountRowComponent key={acc.accountId} acc={acc}/>
+                    );
+                        
                 })}
             </tbody>
         </Table>

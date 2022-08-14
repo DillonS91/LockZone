@@ -40,6 +40,12 @@ public class AccountsController {
 		return accountsRepository.findByWebsiteId(id);
 	}
 	
+//	@GetMapping("/websiteId={id}")
+//	public int getAccountsByWebsiteWebsiteId(@PathVariable int id) {
+//		Website web = accountsRepository.getReferenceById(id);
+//		return web.getAccounts().getAccountId();
+//	}
+	
 	@GetMapping("/master/{master_id}/{page}") //localhost:8080/accounts/master/1/0 PAGENATION for accounts
 	public List<Accounts> pageableAccountsByMaster(@PathVariable int master_id,@PathVariable int page){
 		return service.findAccountsByMaster(master_id, page);
