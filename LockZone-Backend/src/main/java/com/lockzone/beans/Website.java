@@ -1,5 +1,6 @@
 package com.lockzone.beans;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -36,7 +37,7 @@ public class Website {
 	
 	@OneToMany(mappedBy = "website")
 	@JsonIgnore
-	private Set<Accounts> accounts;
+	private List<Accounts> accounts;
 
 	public Website() {
 		super();
@@ -49,11 +50,11 @@ public class Website {
 		this.master = master;
 	}
 
-	public Set<Accounts> getAccounts() {
+	public List<Accounts> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(Set<Accounts> accounts) {
+	public void setAccounts(List<Accounts> accounts) {
 		this.accounts = accounts;
 	}
 

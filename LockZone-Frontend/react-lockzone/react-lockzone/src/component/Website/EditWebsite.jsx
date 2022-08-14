@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 export const EditWebsite = ({locationState}) => {
     
     const nameRef = useRef();
-    const [validated, setValidated] = useState(false);
     const navigate = useNavigate();
     const handleSubmit = async (event) => {              
         try {

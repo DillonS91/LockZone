@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lockzone.beans.Accounts;
+import com.lockzone.beans.Website;
 
 @Repository
 public interface AccountsRepository extends PagingAndSortingRepository<Accounts, Integer> {
@@ -20,5 +21,9 @@ public interface AccountsRepository extends PagingAndSortingRepository<Accounts,
 	@Transactional(propagation = Propagation.NEVER)
 	@Query("from Accounts acc inner join acc.website web inner join web.master mas")
 	public Page<Accounts> findAllAccountsPaged(Pageable request);
+	
+	
+	@Query("from Accounts acc inner join acc.website web where web.id=?1")
+	public List<Accounts> findByWebsiteId(int id);
 	
 }
