@@ -29,7 +29,6 @@ public class AccountsController {
 	@Autowired
 	private AESService aesService;
 	
-	
 	@Autowired
 	private AccountsRepository accountsRepository;
 	
