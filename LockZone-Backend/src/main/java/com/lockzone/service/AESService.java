@@ -18,9 +18,11 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.stereotype.Service;
+
 // **** THIS IS THE KEY AND IV FOR THE ENCRYPTION ALGORITHM ****
 //initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
-
+@Service
 public class AESService {
 	
 	private static SecretKey key;

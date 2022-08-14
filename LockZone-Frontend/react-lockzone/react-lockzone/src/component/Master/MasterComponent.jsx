@@ -1,4 +1,3 @@
-
 import {Table} from 'react-bootstrap';
 import {MasterOne} from './MasterOne';
 
