@@ -27,9 +27,11 @@ export const WebsiteAccounts = () =>{
                     <Table striped bordered hover>
                         <thead>
                             <tr>
-                                <td>Website Name</td>
+                                <td>Account Id</td>
                                 <td>Account Name</td>
-                                <td>Account Password</td>       
+                                <td>Account Password</td>  
+                                <td>Update Account</td>   
+                                <td>Delete Account</td>  
                             </tr>
                         </thead>
                         <tbody>
