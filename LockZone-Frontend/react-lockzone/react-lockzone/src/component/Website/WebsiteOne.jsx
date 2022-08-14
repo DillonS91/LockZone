@@ -7,16 +7,13 @@ import axios from 'axios';
 export const WebsiteOne =({website}) =>{
   const navigate = useNavigate();
 
-  // const handleClick = async() => {
-  //   history(`./${website.websiteId}`, {state:{websiteId:website}})
-  // }
   const handleClick = async(website) =>{
     axios.get(`http://localhost:8080/accounts/websiteId=${website.websiteId}`)
     .then(res =>navigate(`/websites/${website.websiteId}`));
   }
     return (
-        <tr onClick={() =>handleClick(website)} key={website.websiteId}>
-          <td >{website.name}</td>
+        <tr >
+          <td onClick={() =>handleClick(website)} key={website.websiteId}>{website.name}</td>
           <td>
               <Link to="/updateWeb" state={{masterId: website.master.masterId, websiteId: website.websiteId}}><Button variant="primary">Update</Button></Link>
           </td>

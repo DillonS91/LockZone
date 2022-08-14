@@ -14,3 +14,4 @@ export * from './Master/MasterComponent';
 export * from './Accounts/AccountsComponent';
 export * from './Website/EditWebsite';
 export * from './Website/DeleteWebsite';
+export * from './Accounts/DeleteAccounts';

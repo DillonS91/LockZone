@@ -6,4 +6,6 @@ export * from './SignUp';
 export * from './Login';
 export * from './Master';
 export * from './WebsiteAccounts'; 
+export * from './DeleteAcc';
+export * from './updateAcc';
 
