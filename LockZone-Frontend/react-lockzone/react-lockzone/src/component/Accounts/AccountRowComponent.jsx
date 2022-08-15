@@ -1,11 +1,14 @@
+import { Button } from "react-bootstrap";
+import { useNavigate, Link} from 'react-router-dom'
+import { useEffect, useState } from "react";
 
 
 export const AccountRowComponent = ({ acc }) => {
     return(
         <tr>
-            <td>{acc.accnames}</td>
-            <td>{acc.accpassword}</td>
-            <td>{acc.masterId}</td>
+            <td>
+                <Link to="/createAcc" state={{websiteId: acc.website.websiteId, accountId: acc.accountId}}><Button variant="success">Create</Button></Link>
+            </td>
         </tr>
     );
 }

@@ -3,7 +3,6 @@ import { useNavigate, Link} from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 
-
 export const WebsiteOne =({website}) =>{
   const navigate = useNavigate();
 

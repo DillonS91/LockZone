@@ -17,3 +17,4 @@ export * from './Website/DeleteWebsite';
 export * from './Accounts/DeleteAccounts';
 export * from './Accounts/UpdateAccounts';
 export * from './Accounts/CreateAccount';
+export * from './Accounts/AddAccount';

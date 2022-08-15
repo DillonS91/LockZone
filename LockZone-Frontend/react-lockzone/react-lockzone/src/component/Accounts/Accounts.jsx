@@ -16,9 +16,6 @@ export const Accounts =({acc}) =>{
             <td>  
                 <Link to="/deleteAcc" state={{accountId: acc.accountId}}><Button variant="danger">Delete</Button></Link>
             </td>
-            <td>
-                <Link to="/createAcc" state={{websiteId: acc.website.websiteId, accountId: acc.accountId}}><Button variant="success">Create</Button></Link>
-            </td>
         </tr>
         
     );

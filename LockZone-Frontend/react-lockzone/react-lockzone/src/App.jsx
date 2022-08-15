@@ -77,6 +77,7 @@ function App(){
   }else if(cookies["Authority"] === undefined){
     return(
       <>
+      <div className='Background'>
       <BrowserRouter>
           <Navigation>
             {/* <section className ='nav-section'> */}
@@ -107,7 +108,8 @@ function App(){
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<SignUp/>}/>
           </Routes>
-        </BrowserRouter>   
+        </BrowserRouter> 
+      </div>  
       </>
     )
   }

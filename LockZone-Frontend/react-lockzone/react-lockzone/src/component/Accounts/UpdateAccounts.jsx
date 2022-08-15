@@ -61,7 +61,7 @@ export const UpdateAccounts = ({locationState}) => {
         } catch (err) {
             console.error(err);
         } finally {
-            navigate('/websites');
+            navigate(`/websites/${locationState.websiteId}`);
             window.location.reload(false);
         }
     }

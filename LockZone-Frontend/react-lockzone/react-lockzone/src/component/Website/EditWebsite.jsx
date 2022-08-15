@@ -9,7 +9,7 @@ export const EditWebsite = ({locationState}) => {
     const navigate = useNavigate();
     const handleSubmit = async (event) => {              
         try {
-            axios.put(`http://localhost:8080/websites${locationState.websiteId}`,
+            axios.put(`http://localhost:8080/websites/${locationState.websiteId}`,
                 {
                     name: nameRef.current.value,
                     master: {
@@ -20,7 +20,7 @@ export const EditWebsite = ({locationState}) => {
         } catch (err) {
             console.error(err);
         } finally {
-            navigate('/websites');
+            navigate(`/websites`);
             window.location.reload(false);
         }
     }
