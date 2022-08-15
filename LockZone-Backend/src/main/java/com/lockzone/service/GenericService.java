@@ -145,6 +145,7 @@ public class GenericService {
 	public List<Accounts> findAllAccountsPaged(int page) {
 		return accountsRepository.findAll(PageRequest.of(page, DEFAULT_PAGE_SIZE)).toList();
 	}
+	
 	public List<Accounts> findAccountsByMaster(int masterId, int page){
 		return accountsRepository.findByWebsiteMasterMasterId(masterId, PageRequest.of(page, DEFAULT_PAGE_SIZE)).toList();
 	}
