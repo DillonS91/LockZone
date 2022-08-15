@@ -81,6 +81,9 @@ export const AddAccount = ({website, setAccount, renderAddAccount, setRenderAddA
                     </Form.Group>
                 </Row>
                 <Button variant="success" type="submit">Submit Account</Button>
+                <Button variant = "secondary" onClick={() => setRenderAddAccount(!renderAddAccount)}>
+                    Cancel Creation
+                </Button>
             </Form>
             <Form.Label>Click here to generate a randomized password</Form.Label>
             <Row>

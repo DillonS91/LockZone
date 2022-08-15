@@ -67,7 +67,7 @@ export const UpdateAccounts = ({locationState}) => {
     }
 
     return(
-        <Card style={{width:"35%", marginLeft:"10%"}}>
+        <Card style={{width:"50%", marginLeft:"25%"}}>
             <Form onSubmit={handleSubmit}>
                 <Row className="mb-1">
                     <Form.Group as={Col} md="8">

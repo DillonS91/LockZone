@@ -1,4 +1,4 @@
-import {Card, Col, Row, Button} from "react-bootstrap";
+import {Card, Col, Row, Button, Table} from "react-bootstrap";
 import { useState, useEffect} from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
@@ -28,11 +28,12 @@ export const Master =() =>{
     if(master !== undefined & master !== '') {
         return(
             <Card style={{width:"75%", marginLeft:"12%"}}>
+                <Card.Body>
                 {!renderEditMaster && !renderDeleteMaster &&<>
                 <Row>
                     <h1 style={{textAlign: "center"}}>Current Login Information </h1>
                 </Row>
-                <Row striped border hover className= "MasterInfo" onClick={handleClick}>
+                <Row hover className= "MasterInfo" onClick={handleClick}>
                     <Col>
                         <h3>Username</h3>
                         <h4>{master.username}</h4>
@@ -50,11 +51,13 @@ export const Master =() =>{
                         <h4>{master.email}</h4>
                     </Col>
                 </Row>
+
                 </>}
                 {renderEditMaster && <EditMaster master={master} setMaster={setMaster} renderEditMaster= {renderEditMaster} setRenderEditMaster={setRenderEditMaster}/>}
                 {!renderEditMaster && <div><Button onClick={() => setRenderEditMaster(!renderEditMaster)}>Edit Account</Button></div>}
                 {renderDeleteMaster && <DeleteMaster master={master} setMaster={setMaster} renderDeleteMaster= {renderDeleteMaster} setRenderDeleteMaster={setRenderDeleteMaster}/>}
                 {!renderDeleteMaster && <div><Button variant="danger" onClick={() => setRenderDeleteMaster(!renderDeleteMaster)}>Delete Account</Button></div>}
+                </Card.Body>
             </Card>
         )
     }

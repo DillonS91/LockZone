@@ -29,7 +29,7 @@ export const WebsiteAccounts = () =>{
         <>
         <Card style={{width: "60%", alignContent:"center", marginLeft:"20%"}}>
             <h1 style={{textAlign:"center"}}>Accounts for Website</h1>  
-            <Table striped bordered hover>
+            <Table striped border="5" hover>
                 <thead>
                     <tr>
                         <td>Account Id</td>

@@ -33,7 +33,10 @@ export const AddWebsite = ({setWebsite, renderAddWebsite, setRenderAddWebsite, m
                                 <Form.Control type="text" placeholder="Please Enter a new Website" name = 'name' ref = {websiteNameRef} required/>
                     </Form.Group>
                 </Row>
-                <Button type="submit">Submit form</Button>
+                <Button variant = "success" type="submit">Submit form</Button>
+                <Button variant = "secondary" onClick={() => setRenderAddWebsite(!renderAddWebsite)}>
+                    Cancel Creation
+                </Button>
             </Form>
         </Card.Body>
     );

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button, Card, Form } from 'react-bootstrap';
 import { useCookies } from "react-cookie";
 
-export const DeleteMaster = ({master}) =>{
+export const DeleteMaster = ({master, setRenderDeleteMaster, renderDeleteMaster}) =>{
     const[cookies, setCookie, removeCookie] = useCookies('Authority');
     axios.defaults.crossDomain=true
     axios.defaults.withCredentials = true
@@ -37,7 +37,11 @@ export const DeleteMaster = ({master}) =>{
                     <Button variant = "danger" type= "submit">
                         Delete Master Account
                     </Button>
+                    <Button variant = "secondary" onClick={() => setRenderDeleteMaster(!renderDeleteMaster)}>
+                        Cancel Delete Account
+                    </Button>
                     </Form.Group>
+                    
                 </Form>
             </Card.Body>
         </>
