@@ -5,7 +5,7 @@ import { DeleteAccounts } from '../component';
 
 export const DeleteAcc = () => {
     const location = useLocation();
-    const [locationState, setLocationState] = useState({accountId:''});
+    const [locationState, setLocationState] = useState({accountId:'', websiteId:''});
 
     useEffect(()=>{
         if(location.state){

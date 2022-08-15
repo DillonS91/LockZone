@@ -24,6 +24,9 @@ export const EditWebsite = ({locationState}) => {
             window.location.reload(false);
         }
     }
+    const handleExit = async(event) =>{
+        navigate(`/websites`);
+    }
 
     return(
         <Card style={{width:"40%", marginLeft:"30%"}}>
@@ -31,10 +34,13 @@ export const EditWebsite = ({locationState}) => {
                 <Row className="mb-1">
                     <Form.Group as={Col} md="8">
                         <Form.Label>Website Update</Form.Label>
-                                <Form.Control type="text" placeholder="Enter a new Website here" name = 'name' ref = {nameRef} required/>
+                                <Form.Control type="text" placeholder="Enter a new Website or Application name here" name = 'name' ref = {nameRef} required/>
                     </Form.Group>
                 </Row>
                 <Button variant= "success" type="submit">Update</Button>
+                <Button variant = "secondary" onClick= {handleExit}>
+                    Cancel Update
+                </Button>
             </Form>
         </Card>
     );

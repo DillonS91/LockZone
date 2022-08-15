@@ -8,7 +8,6 @@ export const Home = () => {
         <>
         <Card style= {{width:"50%", marginLeft:"25%", justifyContent:"center"}}>
             <Card.Body>
-
                <h1 style={{width:"100%", textAlign:"center"}}> Welcome to the LOCKZONE! </h1>
                <img class="center" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX2KR-4wEK5JkvFzMdyP4SE4x0a0jOFEAbGw&usqp=CAU"}/>
                <MDBFooter bgColor='light' className='text-center text-lg-left'>
@@ -22,6 +21,6 @@ export const Home = () => {
             </MDBFooter>
             </Card.Body>
         </Card>
-        </> 
+        </>  
     );
 }

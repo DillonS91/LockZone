@@ -1,7 +1,5 @@
 import { Button } from "react-bootstrap";
-import { useNavigate, Link} from 'react-router-dom'
-import { useEffect, useState } from "react";
-
+import { Link} from 'react-router-dom'
 
 
 export const Accounts =({acc}) =>{
@@ -14,7 +12,7 @@ export const Accounts =({acc}) =>{
                 <Link to="/updateAcc" state={{masterId: acc.website.master.masterId, websiteId: acc.website.websiteId, accountId: acc.accountId}}><Button variant="primary">Update</Button></Link>
             </td>
             <td>  
-                <Link to="/deleteAcc" state={{accountId: acc.accountId}}><Button variant="danger">Delete</Button></Link>
+                <Link to="/deleteAcc" state={{accountId: acc.accountId, websiteId: acc.website.websiteId,}}><Button variant="danger">Delete</Button></Link>
             </td>
         </tr>
         

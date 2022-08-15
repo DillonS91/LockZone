@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 export const UpdateAccounts = ({locationState}) => {
     //password stuff
     const [validated, setValidated] = useState(false);
-    const [willRender, setWillRender] = useState(false);
     const messageRef = useRef('');
     const [randomPassword, setRandomPassword] = useState(''); //randomPassword.randomizedPassword
     const [shufflePassword, setShufflePassword] = useState(''); //shufflePassword.shuffledPassword
@@ -38,6 +37,9 @@ export const UpdateAccounts = ({locationState}) => {
         } catch (err) {
             console.error(err);
         } 
+    }
+    const handleExit = async(event) =>{
+        navigate(`/websites/${locationState.websiteId}`);
     }
 
 
@@ -80,6 +82,9 @@ export const UpdateAccounts = ({locationState}) => {
                     </Form.Group>
                 </Row>
                 <Button variant= "success" type="submit">Update</Button>
+                <Button variant = "secondary" onClick= {handleExit}>
+                    Cancel Update
+                </Button>
             </Form>
             <Form.Label>Click here to generate a randomized password</Form.Label>
             <Row>

@@ -16,15 +16,21 @@ export const DeleteWebsite = ({locationState}) => {
             window.location.reload(false);
         }
     }
+    const handleExit = async(event) =>{
+        navigate(`/websites`);
+    }
     return(
-        <Card style={{width:"35%", marginLeft:"10%"}}>
+        <Card style={{width:"40%", marginLeft:"30%"}}>
             <Form onSubmit={handleSubmit}>
                 <Form.Group>
-                    <Form.Label>Click if you want to delete this website</Form.Label>
+                    <Form.Label>Click here if you want to delete this website</Form.Label>
                 </Form.Group>
                 <Form.Group>
                 <Button variant = "danger" type= "submit">
                     Delete Website
+                </Button>
+                <Button variant = "secondary" onClick= {handleExit}>
+                    Cancel Delete
                 </Button>
                 </Form.Group>
             </Form>

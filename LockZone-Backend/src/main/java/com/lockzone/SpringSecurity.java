@@ -42,11 +42,15 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 		http.httpBasic(); 
 		
 		http.authorizeRequests().mvcMatchers("/**").permitAll();
-		http.authorizeRequests().mvcMatchers("/register").permitAll();
+		http.authorizeRequests().mvcMatchers("/signup").permitAll();
+		http.authorizeRequests().mvcMatchers("/login").permitAll();
 		http.authorizeRequests().mvcMatchers("/logout").permitAll();
-		http.authorizeRequests().mvcMatchers("/updateWeb").permitAll();
-		http.authorizeRequests().mvcMatchers("/deleteweb").permitAll();
+		http.authorizeRequests().mvcMatchers("/updateWeb").hasAnyRole("USER");
+		http.authorizeRequests().mvcMatchers("/deleteweb").hasAnyRole("USER");
+		http.authorizeRequests().mvcMatchers("/deleteAcc").hasAnyRole("USER");
+		http.authorizeRequests().mvcMatchers("/updateAcc").hasAnyRole("USER");
 		http.authorizeRequests().mvcMatchers("/master/**").hasAnyRole("USER");
+		http.authorizeRequests().mvcMatchers("/websites").hasAnyRole("USER");
 		http.authorizeRequests().mvcMatchers("/websites/**").hasAnyRole("USER");
 		http.authorizeRequests().mvcMatchers("/accounts/**").hasAnyRole("USER");
 		http.logout().deleteCookies("custom-cookie").invalidateHttpSession(false); // POST /logout	

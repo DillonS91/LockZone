@@ -15,6 +15,9 @@ export const DeleteAccounts = ({locationState}) => {
             window.location.reload(false);
         }
     }
+    const handleExit = async(event) =>{
+        navigate(`/websites/${locationState.websiteId}`);
+    }
     return(
         <Card style={{width:"40%", marginLeft:"30%"}}>
             <Form onSubmit={handleSubmit}>
@@ -24,6 +27,9 @@ export const DeleteAccounts = ({locationState}) => {
                 <Form.Group>
                 <Button variant = "danger" type= "submit">
                     Delete Account
+                </Button>
+                <Button variant = "secondary" onClick= {handleExit}>
+                    Cancel Delete
                 </Button>
                 </Form.Group>
             </Form>
