@@ -27,8 +27,15 @@ code {
   text-decoration:underline; 
 }
 .nav-item:hover {
-  color: black;
+  color: rgb(176, 172, 200);
 }
 .MasterInfo{
   text-align:center;
+}
+.Background{
+  color: black;
+  min-height: 100vh;
+  background-color: aliceblue !important;
+  background-image: url('./Locked.png');
+  background-size: cover;
 }

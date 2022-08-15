@@ -30,7 +30,7 @@ export const CreateAccount = ({locationState}) => {
     }
     
     return(
-        <Card.Body>
+        <Card>
             <Form onSubmit={handleSubmit}>
                 <Row className="mb-3">
                     <Form.Group as={Col} md="10">
@@ -44,6 +44,6 @@ export const CreateAccount = ({locationState}) => {
                 </Row>
                 <Button variant="success" type="submit">Submit form</Button>
             </Form>
-        </Card.Body>
+        </Card>
     );
 }

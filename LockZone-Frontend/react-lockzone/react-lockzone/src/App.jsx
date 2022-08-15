@@ -35,14 +35,12 @@ function App(){
   if(cookies["Authority"] === "ROLE_USER"){
     return(
       <>
+      <div className='Background'>
         <BrowserRouter>
           <Navigation>
             {/* <section className ='nav-section'> */}
             <Container fluid>
                 <Nav as="h1" variants="tabs">
-                  {/* <div className = 'nav-item'>
-                    <Link className = 'nav-item' to='/'>Update</Link>
-                  </div> */}
                   <div className = 'nav-item'>
                     <Link className = 'nav-item' to='/home'>Home</Link>
                   </div>
@@ -72,7 +70,8 @@ function App(){
             <Route path='/createAcc' element={<CreateAcc/>}/>
             <Route path="/websites/*" element={<WebsiteAccounts/>}></Route>
           </Routes>
-        </BrowserRouter>   
+        </BrowserRouter> 
+      </div>  
       </>
     );
   }else if(cookies["Authority"] === undefined){

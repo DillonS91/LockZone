@@ -20,6 +20,7 @@ export const WebsiteAccounts = () =>{
 
     return(
         <>
+        <Card style={{width: "60%", alignContent:"center", marginLeft:"20%"}}>
             <h1 style={{textAlign:"center"}}>Accounts for Website</h1>  
             <Table striped bordered hover>
                 <thead>
@@ -40,6 +41,7 @@ export const WebsiteAccounts = () =>{
                     })}
                 </tbody>
             </Table>   
+            </Card>
         </>
     );
     

@@ -28,7 +28,7 @@ export const Master =() =>{
 
     if(master !== undefined & master !== '') {
         return(
-            <Card style={{width:"75%", marginLeft:"10%"}}>
+            <Card style={{width:"75%", marginLeft:"12%"}}>
                 {!renderEditMaster && !renderDeleteMaster &&<>
                 <Row>
                     <h1 style={{textAlign: "center"}}>Current Login Information </h1>
@@ -55,7 +55,7 @@ export const Master =() =>{
                 {renderEditMaster && <EditMaster master={master} setMaster={setMaster} renderEditMaster= {renderEditMaster} setRenderEditMaster={setRenderEditMaster}/>}
                 {!renderEditMaster && <div><Button onClick={() => setRenderEditMaster(!renderEditMaster)}>Edit Account</Button></div>}
                 {renderDeleteMaster && <DeleteMaster master={master} setMaster={setMaster} renderDeleteMaster= {renderDeleteMaster} setRenderDeleteMaster={setRenderDeleteMaster}/>}
-                {!renderDeleteMaster && <div><Button onClick={() => setRenderDeleteMaster(!renderDeleteMaster)}>Delete Account</Button></div>}
+                {!renderDeleteMaster && <div><Button variant="danger" onClick={() => setRenderDeleteMaster(!renderDeleteMaster)}>Delete Account</Button></div>}
             </Card>
         )
     }
