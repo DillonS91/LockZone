@@ -92,7 +92,12 @@ public class AccountsController {
 	@PostMapping
 	public Accounts create(@Valid @RequestBody Accounts account) {
 		try {
+<<<<<<< HEAD
 			account.setAccpassword(AES_Encrypt.encrypt(account.getAccpassword()));
+=======
+			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
+>>>>>>> 03eedfb6a0155b43242ed0422000f51b2210ac51
 		} catch ( Exception e ) {
 			e.printStackTrace();
 		}
@@ -103,7 +108,12 @@ public class AccountsController {
 	@PutMapping("/{id}") //localhost:8080/accounts/1
 	public Accounts updateAccounts(@RequestBody Accounts account, @PathVariable int id) {
 		try {
+<<<<<<< HEAD
 			account.setAccpassword(AES_Encrypt.encrypt(account.getAccpassword()));
+=======
+			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
+			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
+>>>>>>> 03eedfb6a0155b43242ed0422000f51b2210ac51
 		} catch ( Exception e ) {
 			e.printStackTrace();
 		}

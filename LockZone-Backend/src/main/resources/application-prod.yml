@@ -9,7 +9,11 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       ddl-auto: none
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 03eedfb6a0155b43242ed0422000f51b2210ac51
 server:
   servlet:
     session:
