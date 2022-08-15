@@ -26,19 +26,19 @@ export const Login = () => {
     }
     return(
         <Card style={{width:"50%", marginLeft:"25%", justifyContent:"center"}}>
-            <h3 style={{width:"100%", textAlign:"center"}}>Login</h3>
+            <h2 style={{width:"100%", textAlign:"center"}}>User Login</h2>
             <Form onKeyDown={(e) => {e.key==="Enter"?login():setErrorMessage('')}}>
                 <Row style={{ justifyContent: "center" }}>
-                    <Form.Label style={{ width: "25%", paddingRight: 0, fontSize: "18px" }}>Username: </Form.Label>
+                    <Form.Label style={{ width: "15%", paddingRight: 0, fontSize: "28px" }}>Username: </Form.Label>
                     <Form.Control ref={nameRef} style={{ width: "55%", height: "32px" }} name="Username" required={true} placeholder='' />
                 </Row>
                 <Row style={{ justifyContent: "center" }}>
-                    <Form.Label style={{ width: "25%", paddingRight: 0, fontSize: "18px" }}>Password: </Form.Label>
+                    <Form.Label style={{ width: "15%", paddingRight: 0, fontSize: "28px" }}>Password: </Form.Label>
                     <Form.Control ref={passwordRef} style={{ width: "55%", height: "32px", inputSecurity: "disc" }} type="password" name="password" required={true} />
                 </Row>
                 <Row style={{ justifyContent: "center" }}>
                     <p style={{textAlign:'center',color:'red'}}>{errorMessage}</p>
-                    <Button variant="primary" onClick={() => {login()}}>Submit</Button>
+                    <Button variant="success" onClick={() => {login()}}>Submit</Button>
                 </Row>
             </Form>
         </Card>

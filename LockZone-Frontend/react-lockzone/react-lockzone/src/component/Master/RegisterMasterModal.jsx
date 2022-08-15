@@ -24,8 +24,10 @@ export const RegisterMasterModal = (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                Please Login now to begin password management
+                Proceed to login
                 <b/>
+            </Modal.Body>
+            <Modal.Body>
                 <Button onClick={handleClick}>Login</Button>
             </Modal.Body>
         </Modal>

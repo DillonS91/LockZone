@@ -1,17 +1,16 @@
-import {Card, Col, Row,Form, Button} from "react-bootstrap";
-import { useState, useEffect, useRef } from "react";
+import {Card, Col, Row, Button} from "react-bootstrap";
+import { useState, useEffect} from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import {EditMaster} from "../component/Master/EditMaster"
 import {DeleteMaster} from "../component/Master/DeleteMaster"
-import { MasterComponent } from "../component";
 import {useNavigate} from 'react-router-dom'
 
 
 export const Master =() =>{
     const check = useNavigate();
     const[master, setMaster] = useState();
-    const [cookies, setCookie] = useCookies();
+    const [cookies] = useCookies();
     const[renderEditMaster, setRenderEditMaster] = useState(false);
     const[renderDeleteMaster, setRenderDeleteMaster] = useState(false);
 

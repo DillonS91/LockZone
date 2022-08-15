@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 
 export const Websites = () => {
     const[websites, setWebsites] = useState([]);
-    const [cookies, setCookie] = useCookies();
+    const [cookies] = useCookies();
 
     useEffect(()=>{
         axios.get(`http://localhost:8080/websites/find?name=${cookies['username']}`).then(res => setWebsites(res.data));

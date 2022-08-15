@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Button, Form, Row, Col, Card } from 'react-bootstrap';
 
 
-export const AddWebsite = ({website, setWebsite, renderAddWebsite, setRenderAddWebsite, master}) => {
+export const AddWebsite = ({setWebsite, renderAddWebsite, setRenderAddWebsite, master}) => {
     const websiteNameRef = useRef();
 
     const handleSubmit = async (event) => {

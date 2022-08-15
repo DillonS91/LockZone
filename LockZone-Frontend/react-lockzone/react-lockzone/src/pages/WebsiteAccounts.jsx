@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 
 
 export const WebsiteAccounts = () =>{
-   // const [master,setMaster] = useState();
     const [website, setWebsite] = useState([]);
     const [account, setAccount] = useState([]);
     const[renderAddAccount, setRenderAddAccount] = useState(false);

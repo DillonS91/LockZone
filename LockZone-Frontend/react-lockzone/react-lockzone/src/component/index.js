@@ -1,7 +1,5 @@
 export * from './Navigation';
 
-export * from './PasswordComponent';
-
 export * from './Website/WebsiteComponent';
 export * from './Website/AddWebsite';
 export * from './Master/MasterComponent';
