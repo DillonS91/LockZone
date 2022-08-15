@@ -1,10 +1,18 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/chinook
+    url: jdbc:mysql://localhost:3306/lockzone_test
     username: root
     password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
 
-logging:
-  level:
-    com:
-      chinook: WARN
+server:
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        secure: true

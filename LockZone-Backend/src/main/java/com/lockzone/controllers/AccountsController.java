@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lockzone.beans.Accounts;
 import com.lockzone.data.AccountsRepository;
 import com.lockzone.service.AESService;
+import com.lockzone.service.AES_Decrypt;
+import com.lockzone.service.AES_Encrypt;
 import com.lockzone.service.GenericService;
 
 @RestController
@@ -27,7 +29,10 @@ import com.lockzone.service.GenericService;
 public class AccountsController {
 	
 	@Autowired
-	private AESService aesService;
+	private AES_Encrypt aes_Encrypt;
+	
+	@Autowired
+	private AES_Decrypt aes_Decrypt;
 	
 	@Autowired
 	private AccountsRepository accountsRepository;
@@ -43,9 +48,8 @@ public class AccountsController {
 	public List<Accounts> findByMaster(@PathVariable int id){
 		List<Accounts> accounts = accountsRepository.findByWebsiteId(id);
 		try {
-			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
 			for (Accounts acc: accounts) {
-				acc.setAccpassword(aesService.decrypt(acc.getAccpassword()));
+				acc.setAccpassword(AES_Decrypt.decrypt(acc.getAccpassword()));
 			}
 		} catch ( Exception e ) {
 			e.printStackTrace();
@@ -64,9 +68,8 @@ public class AccountsController {
 	public List<Accounts> pageableAccountsByMaster(@PathVariable int master_id,@PathVariable int page){
 		List<Accounts> accounts = service.findAccountsByMaster(master_id, page);
 		try {
-			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
 			for (Accounts acc: accounts) {
-				acc.setAccpassword(aesService.decrypt(acc.getAccpassword()));
+				acc.setAccpassword(AES_Decrypt.decrypt(acc.getAccpassword()));
 			}
 		} catch ( Exception e ) {
 			e.printStackTrace();
@@ -88,24 +91,22 @@ public class AccountsController {
 //	}
 	@PostMapping
 	public Accounts create(@Valid @RequestBody Accounts account) {
-//		try {
-//			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
-//			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
-//		} catch ( Exception e ) {
-//			e.printStackTrace();
-//		}
+		try {
+			account.setAccpassword(AES_Encrypt.encrypt(account.getAccpassword()));
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
 		return service.saveAccounts(account);
 	}
 	
 	//Same RequestBody as Post
 	@PutMapping("/{id}") //localhost:8080/accounts/1
 	public Accounts updateAccounts(@RequestBody Accounts account, @PathVariable int id) {
-//		try {
-//			aesService.initFromStrings("PTgBIqwx2IU9VZIOhAsa35w22q41brIpJHTkLFU4aFc=", "fHcn9YBZWu89tA==");
-//			account.setAccpassword(aesService.encrypt(account.getAccpassword()));
-//		} catch ( Exception e ) {
-//			e.printStackTrace();
-//		}
+		try {
+			account.setAccpassword(AES_Encrypt.encrypt(account.getAccpassword()));
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
 		return service.updateAccounts(id, account);
 	}
 	
